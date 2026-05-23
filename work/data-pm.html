@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Think About Data — Atolagbe Semilore James</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:#fff;color:#000;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bottom:4px solid #000;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 80px}
+.nav-logo{display:flex;align-items:center;gap:0;cursor:pointer;text-decoration:none}
+.logo-mark{width:44px;height:44px;border:4px solid #000;background:#fff;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:3px 3px 0 #000;flex-shrink:0}
+.logo-mark-inner{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;color:#000;letter-spacing:-0.05em}
+.logo-accent{position:absolute;bottom:-4px;right:-4px;width:10px;height:10px;background:#F97316;border:2px solid #000}
+.logo-wordmark{font-family:'Space Mono',monospace;font-weight:700;font-size:20px;letter-spacing:-0.02em;color:#000;margin-left:12px}
+.nav-back{font-family:'Space Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:#000;text-decoration:none;border-bottom:2px solid #F97316;padding-bottom:2px}
+.nav-back:hover{color:#F97316}
+
+/* HERO - inverted for contrast with PaaS page */
+.case-hero{padding-top:72px;background:#F97316;border-bottom:4px solid #000;padding-left:80px;padding-right:80px;padding-bottom:64px;padding-top:120px;position:relative;overflow:hidden}
+.case-hero-pattern{position:absolute;inset:0;background:repeating-linear-gradient(135deg,transparent,transparent 16px,rgba(0,0,0,0.06) 16px,rgba(0,0,0,0.06) 17px)}
+.case-hero-content{position:relative;z-index:2;max-width:900px}
+.article-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;padding:6px 14px;border:3px solid #000;border-radius:2px;background:#000;color:#F97316;margin-bottom:32px}
+.case-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(36px,5.5vw,72px);line-height:0.95;letter-spacing:-0.03em;color:#000;margin-bottom:32px;max-width:860px}
+.article-meta{display:flex;gap:40px;flex-wrap:wrap;padding-top:32px;border-top:3px solid rgba(0,0,0,0.3)}
+.meta-item{display:flex;flex-direction:column;gap:4px}
+.meta-label{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(0,0,0,0.5)}
+.meta-value{font-family:'Space Mono',monospace;font-size:13px;color:#000;font-weight:700}
+
+/* ARTICLE BODY */
+.article-body{max-width:720px;margin:0 auto;padding:80px 40px}
+.article-body h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.02em;color:#000;margin-bottom:20px;margin-top:64px}
+.article-body p{font-size:18px;line-height:1.8;color:#111;margin-bottom:28px}
+.article-body strong{font-weight:700}
+
+/* OPENING - the VyneStudios story */
+.opening-box{border:4px solid #000;padding:40px;margin:0 0 48px;background:#0D1117;box-shadow:8px 8px 0 #000;position:relative}
+.opening-box::before{content:'ORIGIN STORY';position:absolute;top:-14px;left:24px;background:#F97316;border:3px solid #000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;letter-spacing:0.15em;padding:3px 10px;color:#fff}
+.opening-box p{font-family:'Space Grotesk',sans-serif;font-size:18px;line-height:1.8;color:#e5e7eb;margin-bottom:20px}
+.opening-box p:last-child{margin-bottom:0}
+.opening-box strong{color:#F97316}
+
+/* PULL QUOTE */
+.pull-quote{border-left:8px solid #F97316;padding:24px 32px;margin:48px 0;background:#FFF7ED}
+.pull-quote p{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:500;line-height:1.5;color:#000;font-style:italic;margin:0}
+
+/* LAYER CARDS */
+.layer-grid{display:grid;grid-template-columns:1fr;gap:0;border:4px solid #000;margin:48px 0;box-shadow:6px 6px 0 #000;overflow:hidden}
+.layer-card{border-bottom:4px solid #000;display:grid;grid-template-columns:80px 1fr;overflow:hidden}
+.layer-card:last-child{border-bottom:none}
+.layer-num{background:#000;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 16px;gap:8px}
+.layer-num span{font-family:'Space Mono',monospace;font-weight:700;font-size:24px;color:#F97316}
+.layer-num small{font-family:'Space Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;color:rgba(255,255,255,0.4);text-align:center;line-height:1.3}
+.layer-content{padding:28px 32px;background:#fff}
+.layer-content:hover{background:#FFF7ED}
+.layer-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;color:#000;margin-bottom:8px}
+.layer-question{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#F97316;margin-bottom:12px}
+.layer-body{font-size:15px;line-height:1.65;color:#333}
+
+/* CALLOUT */
+.callout{border:4px solid #000;padding:32px;margin:48px 0;background:#000;box-shadow:6px 6px 0 #F97316}
+.callout p{font-family:'Space Grotesk',sans-serif;font-size:16px;line-height:1.7;color:#fff;margin:0}
+.callout strong{color:#F97316}
+
+/* CLOSING BLOCK */
+.closing-rule{border:4px solid #000;padding:40px;margin:48px 0;background:#F9F9F9}
+.closing-rule h3{font-family:'Space Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.15em;color:#888;margin-bottom:20px}
+.closing-rule ol{padding-left:24px;list-style:none;counter-reset:rule-counter}
+.closing-rule li{counter-increment:rule-counter;font-family:'Space Mono',monospace;font-size:14px;color:#000;line-height:1.6;padding:12px 0;border-bottom:2px solid #e5e7eb;display:flex;gap:16px}
+.closing-rule li:last-child{border-bottom:none}
+.closing-rule li::before{content:counter(rule-counter,decimal-leading-zero);color:#F97316;font-weight:700;flex-shrink:0}
+
+.back-section{text-align:center;padding:80px 0 40px;border-top:4px solid #000;margin-top:80px}
+.btn-back{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;border:4px solid #000;background:#F97316;color:#fff;text-decoration:none;box-shadow:4px 4px 0 #000;transition:box-shadow 0.2s,transform 0.2s}
+.btn-back:hover{box-shadow:6px 6px 0 #000;transform:translate(-2px,-2px)}
+
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .case-hero{padding:100px 24px 48px}
+  .article-body{padding:48px 24px}
+  .layer-card{grid-template-columns:60px 1fr}
+  .layer-num{padding:20px 8px}
+  .opening-box{padding:28px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html">
+    <div class="logo-mark">
+      <div class="logo-mark-inner">ASJ</div>
+      <div class="logo-accent"></div>
+    </div>
+    <span class="logo-wordmark">Semilore</span>
+  </a>
+  <a href="../index.html#case-studies" class="nav-back">← Back to Writing</a>
+</nav>
+
+<div class="case-hero">
+  <div class="case-hero-pattern"></div>
+  <div class="case-hero-content">
+    <div class="article-tag">Essay · Product Thinking</div>
+    <h1 class="case-title">How I Think About Data as a PM Who Builds Things</h1>
+    <div class="article-meta">
+      <div class="meta-item"><span class="meta-label">Author</span><span class="meta-value">Atolagbe Semilore James</span></div>
+      <div class="meta-item"><span class="meta-label">Topic</span><span class="meta-value">Analytics · Product Decisions</span></div>
+      <div class="meta-item"><span class="meta-label">Context</span><span class="meta-value">VyneStudios · Moonframe</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="article-body">
+
+  <div class="opening-box">
+    <p>The on-chain data looked healthy. Wallet addresses were growing, transactions were moving, token distribution was spreading across the chart the way you want it to. By every number on the dashboard, we were acquiring users.</p>
+    <p>We weren't. <strong>We were acquiring addresses.</strong></p>
+    <p>A single person can hold twenty wallets. A whale can distribute tokens across hundreds. The metric we were tracking wasn't wrong — it just wasn't measuring what we thought it was measuring. We had built a reporting layer on top of the wrong unit, and every goal we were hitting was a goal we had defined incorrectly.</p>
+  </div>
+
+  <p>That was the moment I understood something about data that no dashboard had ever shown me: data doesn't tell you what's happening. It tells you what it was built to count. The rest is your job.</p>
+
+  <div class="pull-quote">
+    <p>"Data doesn't tell you what's happening. It tells you what it was built to count. The rest is your job."</p>
+  </div>
+
+  <p>For a while there was no clear fix. The numbers were technically accurate. Nobody had lied. The dashboard was doing exactly what we built it to do. That was the problem.</p>
+
+  <p>The question worth sitting with was simpler than the solution: what did we actually want to know? Not what were we tracking — what were we trying to understand. Real people choosing the product, returning to it, holding value in it. We had never built anything that could tell us that.</p>
+
+  <p>The fix, when it came, was less elegant than I wanted. A second identifier at the point of wallet connection. An email. A social login. Anything that could tie an address to a human being. It wasn't airtight, but it gave us something we hadn't had: a bridge between what the chain recorded and who was actually there.</p>
+
+  <p>What shifted wasn't just the metric. It was a habit I didn't have before: asking, before anything gets measured, <strong>what is this actually counting, and is that the same thing as what we want to know.</strong></p>
+
+  <h2>Four Questions. Every Build. In Order.</h2>
+
+  <p>Most PMs encounter data after the fact. The feature ships, the dashboard populates, someone pulls a report two weeks later. By then, the decisions that shaped what gets measured were already made — quietly, in the architecture, in the events that were or weren't instrumented, in the metrics someone chose to surface and the ones nobody thought to track.</p>
+
+  <p>Thinking about data as a layer means making those decisions deliberately, before anything ships. Four questions, every time.</p>
+
+  <div class="layer-grid">
+    <div class="layer-card">
+      <div class="layer-num"><span>01</span><small>Layer One</small></div>
+      <div class="layer-content">
+        <div class="layer-question">Identity</div>
+        <div class="layer-title">Who is actually here?</div>
+        <div class="layer-body">Not users as an aggregate number — users as distinct people with distinct behaviors inside the same product. Moonframe has at least two different people inside it: the person logging receipts daily and the CEO reading the dashboard weekly. If those two roles get collapsed into one "active user" metric, the number will always look healthier than it is — because one person's daily habit is inflating another person's weekly glance. Identity data isn't about knowing everything about your user. It's about knowing enough to count them correctly.</div>
+      </div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-num"><span>02</span><small>Layer Two</small></div>
+      <div class="layer-content">
+        <div class="layer-question">Performance</div>
+        <div class="layer-title">Whether the product is working</div>
+        <div class="layer-body">This is the layer most PMs think they're measuring when they look at dashboards, but often aren't. Performance data is functional: are receipts being captured without errors, is inventory staying in sync, is the dashboard showing accurate figures. It's not about engagement or growth. It's about whether the product is doing what it was built to do. A product that people use despite being broken is not a healthy product. It's a product with tolerant users, and tolerance has a limit.</div>
+      </div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-num"><span>03</span><small>Layer Three</small></div>
+      <div class="layer-content">
+        <div class="layer-question">Behavior</div>
+        <div class="layer-title">How people actually move through it</div>
+        <div class="layer-body">You design a feature with an assumed behavior in mind. The user will do this, then that, then arrive here. Behavior data is where you find out how wrong that assumption was. An expense feature that gets used occasionally isn't a failed feature — it's a question: is it occasional because it's hard to find, because it's incomplete, or because the people using Moonframe genuinely don't expense that often? The data doesn't answer that question. It makes sure you ask it.</div>
+      </div>
+    </div>
+    <div class="layer-card">
+      <div class="layer-num"><span>04</span><small>Layer Four</small></div>
+      <div class="layer-content">
+        <div class="layer-question">Signal</div>
+        <div class="layer-title">What people are telling you — directly and indirectly</div>
+        <div class="layer-body">Reviews, support tickets, churn reasons, beta feedback. This is the only layer that carries intent. Every other layer shows you what happened. Signal data gives you a first draft of why. For a product pre-launch, this layer is almost entirely qualitative — which is exactly why you need to know what you're listening for before the volume picks up. Signal without structure is just noise with good intentions.</div>
+      </div>
+    </div>
+  </div>
+
+  <p>These four layers aren't a checklist. They're a sequence of questions that should be live before a single line of code is written. The PM who waits for the data to arrive after launch isn't thinking about data. They're reacting to it.</p>
+
+  <h2>Nobody Tells You This When You Start Building</h2>
+
+  <p>Most product decisions I've seen made in bad faith weren't made by bad people. They were made by people who had the wrong number, or the right number measuring the wrong thing, or no number at all and a deadline anyway. The dashboard looked fine. The goal was green. The product was quietly failing in a way nobody had instrumented.</p>
+
+  <div class="callout">
+    <p><strong>Thinking about data as a layer doesn't make you an analyst.</strong> It makes you the person in the room who knows what the numbers actually mean, which ones to trust, and which questions they can't answer. That's not a technical skill. It's a thinking habit.</p>
+  </div>
+
+  <p>And like most thinking habits, it starts before you open any tool, before the first line of code, before the first feature ships.</p>
+
+  <div class="closing-rule">
+    <h3>The Rules, Simplified</h3>
+    <ol>
+      <li>Ask what you're counting.</li>
+      <li>Ask if that's the same thing as what you want to know.</li>
+      <li>Ask who is here — really.</li>
+      <li>Ask whether the product is working, not just whether people are using it.</li>
+      <li>Ask how people actually move, not how you designed them to move.</li>
+      <li>Ask what they're telling you that no metric is capturing.</li>
+      <li>Do all of this before the build, not after.</li>
+    </ol>
+  </div>
+
+  <p>The data doesn't arrive. You design for it, or you go without it.</p>
+
+  <p>The rest is just building.</p>
+
+</div>
+
+<div style="max-width:720px;margin:0 auto;padding:0 40px">
+  <div class="back-section">
+    <a href="../index.html" class="btn-back">← Back to Portfolio</a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atolagbe Semilore James — Product Manager</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:#fff;color:#000;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bottom:4px solid #000;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 80px}
+.nav-logo{display:flex;align-items:center;gap:0;cursor:pointer;text-decoration:none}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-family:'Space Mono',monospace;font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:#000;text-decoration:none;transition:color 0.2s}
+.nav-links a:hover{color:#F97316}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:3px;background:#000;transition:all 0.3s}
+
+/* ASJ LOGO MARK */
+.logo-mark{width:44px;height:44px;border:4px solid #000;background:#fff;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:3px 3px 0 #000;flex-shrink:0}
+.logo-mark-inner{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;color:#000;letter-spacing:-0.05em;line-height:1}
+.logo-accent{position:absolute;bottom:-4px;right:-4px;width:10px;height:10px;background:#F97316;border:2px solid #000}
+.logo-wordmark{font-family:'Space Mono',monospace;font-weight:700;font-size:20px;letter-spacing:-0.02em;color:#000;margin-left:12px}
+
+/* HERO */
+#hero{min-height:100vh;padding-top:72px;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden}
+.hero-label{font-family:'Space Mono',monospace;font-size:14px;letter-spacing:0.2em;color:#000;margin-bottom:24px;opacity:0;animation:fadeUp 0.6s ease forwards 0.2s}
+.hero-identity{display:flex;flex-direction:column;align-items:center;gap:24px;margin-bottom:32px;opacity:0;animation:fadeUp 0.6s ease forwards 0.3s}
+.hero-logo-large{width:120px;height:120px;border:6px solid #000;background:#fff;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:8px 8px 0 #000}
+.hero-logo-large-inner{font-family:'Space Mono',monospace;font-weight:700;font-size:36px;color:#000;letter-spacing:-0.05em;line-height:1}
+.hero-logo-accent-tl{position:absolute;top:-6px;left:-6px;width:18px;height:18px;background:#F97316;border:3px solid #000}
+.hero-logo-accent-br{position:absolute;bottom:-6px;right:-6px;width:18px;height:18px;background:#000}
+.hero-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(48px,8vw,112px);line-height:0.9;letter-spacing:-0.03em;color:#000}
+.hero-role{font-family:'Space Mono',monospace;font-size:clamp(16px,2.5vw,24px);letter-spacing:0.05em;color:#000;margin-bottom:48px;opacity:0;animation:fadeUp 0.6s ease forwards 0.5s}
+.hero-btns{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp 0.6s ease forwards 0.7s}
+.btn{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;padding:16px 32px;border:4px solid #000;border-radius:0;cursor:pointer;text-decoration:none;transition:box-shadow 0.2s,transform 0.2s}
+.btn-orange{background:#F97316;color:#fff;box-shadow:4px 4px 0 #000}
+.btn-orange:hover{box-shadow:6px 6px 0 #000;transform:translate(-2px,-2px)}
+.btn-outline{background:#fff;color:#000;box-shadow:4px 4px 0 #000}
+.btn-outline:hover{box-shadow:6px 6px 0 #000;transform:translate(-2px,-2px)}
+
+/* ABOUT */
+#about{padding:96px 80px;border-top:4px solid #000;background:#fff}
+.section-heading{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:48px;letter-spacing:-0.02em;color:#000;margin-bottom:64px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1152px;margin:0 auto}
+.about-img-box{border:4px solid #000;background:rgba(249,115,22,0.05);box-shadow:8px 8px 0 #000;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;opacity:0;transform:translateX(-30px)}
+.about-img-box.visible{animation:slideInLeft 0.6s ease forwards}
+.about-watermark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:96px;color:rgba(0,0,0,0.06);user-select:none;line-height:1;text-align:center}
+.about-watermark span{display:block;font-size:56px;color:#F97316;opacity:0.15}
+.deco-sq{position:absolute;top:-24px;right:-24px;width:72px;height:72px;background:#F97316;border:4px solid #000;transform:rotate(12deg);z-index:1}
+.deco-sq2{position:absolute;bottom:-16px;left:-16px;width:40px;height:40px;background:#000}
+.about-text{opacity:0;transform:translateX(30px)}
+.about-text.visible{animation:slideInRight 0.6s ease 0.2s forwards}
+.about-text p{font-size:18px;line-height:1.7;color:#000;margin-bottom:24px}
+.about-tags{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.tag{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:3px solid #000;border-radius:2px}
+.tag-orange{background:#F97316;color:#fff}
+.tag-outline{background:#fff;color:#000}
+
+/* WORK */
+#work{padding:96px 80px;border-top:4px solid #000;background:#fff}
+.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:1152px;margin:0 auto}
+.project-card{border:4px solid #000;background:#fff;box-shadow:6px 6px 0 #000;cursor:pointer;transition:box-shadow 0.2s,transform 0.2s;opacity:0;transform:translateY(30px);text-decoration:none;color:#000;display:block}
+.project-card.visible{animation:fadeUp 0.6s ease forwards}
+.project-card:hover{box-shadow:10px 10px 0 #000;transform:translate(-4px,-4px)}
+.browser-bar{background:#F3F4F6;border-bottom:4px solid #000;padding:12px;display:flex;align-items:center;gap:8px;height:48px}
+.dot{width:12px;height:12px;border-radius:50%;border:2px solid #000;flex-shrink:0}
+.dot-orange{background:#F97316}
+.dot-black{background:#000}
+.url-bar{flex:1;background:#fff;border:2px solid #000;padding:4px 8px;font-family:'Space Mono',monospace;font-size:11px;color:#555;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.preview-area{height:220px;border-bottom:4px solid #000;overflow:hidden;position:relative;background:#0D1117}
+.preview-area img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.preview-badge{position:absolute;top:12px;right:12px;background:#F97316;border:2px solid #000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:4px 8px;color:#fff;box-shadow:2px 2px 0 #000}
+.card-content{padding:24px}
+.card-tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.1em;padding:4px 8px;border:2px solid #000;margin-bottom:14px}
+.card-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;color:#000;margin-bottom:8px;line-height:1.2}
+.card-desc{font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;color:#333;margin-bottom:16px}
+.card-link{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#000;text-decoration:none;border-bottom:2px solid #F97316;padding-bottom:2px}
+
+/* CASE STUDIES */
+#case-studies{padding:96px 80px;border-top:4px solid #000;background:#fff}
+.cases-wrap{border:4px solid #000;overflow:hidden;max-width:1152px;margin:0 auto}
+.case-row{display:flex;align-items:center;gap:32px;padding:32px;border-top:4px solid #000;cursor:pointer;text-decoration:none;transition:background 0.2s;opacity:0;transform:translateY(20px)}
+.case-row:first-child{border-top:none}
+.case-row:nth-child(even){background:#F9F9F9}
+.case-row:nth-child(odd){background:#fff}
+.case-row:hover{background:#F97316}
+.case-row:hover .case-num,.case-row:hover .case-title,.case-row:hover .case-sub,.case-row:hover .case-arrow{color:#fff}
+.case-row.visible{animation:fadeUp 0.5s ease forwards}
+.case-num{font-family:'Space Mono',monospace;font-weight:700;font-size:48px;color:#000;min-width:96px;transition:color 0.2s}
+.case-info{flex:1}
+.case-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:20px;line-height:1.4;color:#000;margin-bottom:6px;transition:color 0.2s}
+.case-sub{font-family:'Space Mono',monospace;font-size:12px;color:#666;transition:color 0.2s}
+.case-arrow{font-size:32px;color:#000;transition:color 0.2s,transform 0.2s}
+.case-row:hover .case-arrow{transform:translateX(8px)}
+
+/* SKILLS */
+#skills{padding:96px 80px;border-top:4px solid #000;background:#fff;overflow:hidden}
+.skills-sub{font-family:'Space Mono',monospace;font-size:13px;color:#666;margin-bottom:48px;margin-top:12px}
+.skills-cloud{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;max-width:1152px;margin:0 auto}
+.skill-tag{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;padding:10px 18px;border:3px solid #000;border-radius:2px;box-shadow:3px 3px 0 #000;cursor:default;transition:transform 0.3s;opacity:0;transform:scale(0.8)}
+.skill-tag.visible{animation:scaleIn 0.4s ease forwards}
+.sk-orange{background:#F97316;color:#fff}
+.sk-outline{background:#fff;color:#000}
+
+/* CONTACT */
+#contact{padding:96px 80px;border-top:4px solid #000;background:#000;text-align:center}
+.contact-inner{max-width:1024px;margin:0 auto}
+.contact-heading{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(48px,7vw,80px);line-height:1.1;color:#fff;margin-bottom:32px;opacity:0;transform:translateY(20px)}
+.contact-heading.visible{animation:fadeUp 0.6s ease forwards}
+.contact-sub{font-family:'Space Grotesk',sans-serif;font-size:18px;color:rgba(255,255,255,0.7);margin-bottom:48px;opacity:0}
+.contact-sub.visible{animation:fadeUp 0.6s ease 0.2s forwards}
+.btn-contact{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:16px;letter-spacing:0.1em;text-transform:uppercase;padding:16px 32px;background:#F97316;color:#fff;border:4px solid #fff;border-radius:0;box-shadow:4px 4px 0 #fff;cursor:pointer;text-decoration:none;transition:box-shadow 0.2s;margin-bottom:48px;opacity:0}
+.btn-contact.visible{animation:fadeUp 0.6s ease 0.3s forwards}
+.btn-contact:hover{box-shadow:6px 6px 0 #fff}
+.social-links{display:flex;justify-content:center;gap:32px;margin-bottom:64px;flex-wrap:wrap;opacity:0}
+.social-links.visible{animation:fadeUp 0.6s ease 0.4s forwards}
+.social-link{font-family:'Space Mono',monospace;font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:#fff;text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px;transition:color 0.2s,border-color 0.2s}
+.social-link:hover{color:#F97316;border-bottom-color:#F97316}
+.copyright{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.3);margin-top:48px;opacity:0;letter-spacing:0.1em}
+.copyright.visible{animation:fadeUp 0.6s ease 0.5s forwards}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideInLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes slideInRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+
+/* MOBILE */
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .nav-links{display:none;position:fixed;top:72px;left:0;width:100%;background:#fff;border-bottom:4px solid #000;flex-direction:column;gap:0;padding:0}
+  .nav-links.open{display:flex}
+  .nav-links a{display:block;padding:18px 24px;border-bottom:2px solid #000;font-size:13px}
+  .hamburger{display:flex}
+  .logo-wordmark{font-size:16px}
+  #hero,#about,#work,#case-studies,#skills,#contact{padding:64px 24px}
+  .about-grid{grid-template-columns:1fr}
+  .projects-grid{grid-template-columns:1fr}
+  .section-heading{font-size:36px;margin-bottom:40px}
+  .case-num{font-size:32px;min-width:60px}
+  .case-row{padding:20px;gap:16px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">
+    <div class="logo-mark">
+      <div class="logo-mark-inner">ASJ</div>
+      <div class="logo-accent"></div>
+    </div>
+    <span class="logo-wordmark">Semilore</span>
+  </a>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#case-studies">Writing</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <p class="hero-label">PRODUCT MANAGER · BUILDER · AI-NATIVE</p>
+  <div class="hero-identity">
+    <div class="hero-logo-large">
+      <div class="hero-logo-accent-tl"></div>
+      <div class="hero-logo-large-inner">ASJ</div>
+      <div class="hero-logo-accent-br"></div>
+    </div>
+  </div>
+  <h1 class="hero-name" style="opacity:0;animation:fadeUp 0.6s ease forwards 0.4s">ATOLAGBE<br>SEMILORE</h1>
+  <p class="hero-role">I ship products. Then I build tools to ship them faster.</p>
+  <div class="hero-btns">
+    <a href="#work" class="btn btn-orange">See My Work</a>
+    <a href="mailto:semiares@gmail.com" class="btn btn-outline">Get In Touch</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div style="max-width:1152px;margin:0 auto">
+    <h2 class="section-heading">Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-img-box" id="about-img">
+        <div class="deco-sq"></div>
+        <div class="deco-sq2"></div>
+        <div class="about-watermark">PM<span>+ Builder</span></div>
+      </div>
+      <div class="about-text" id="about-text">
+        <p>I'm a Product Manager who builds things. Not metaphorically — I ship internal tools, automations, and apps using AI, and I can read HTML, CSS, JavaScript, React, and React Native well enough to have real conversations with engineers, file meaningful bug reports, and understand tradeoffs before they become problems.</p>
+        <p>My background spans fintech, Web3 gaming, and e-commerce. I write specs engineers can build from without a back-and-forth. I own roadmaps, talk to users, and stay close enough to the product to notice what's actually broken versus what's just loud.</p>
+        <p>I think in systems. I build when I see gaps.</p>
+        <div class="about-tags">
+          <span class="tag tag-orange">Fintech</span>
+          <span class="tag tag-outline">Web3 Gaming</span>
+          <span class="tag tag-orange">E-Commerce</span>
+          <span class="tag tag-outline">Abuja, Nigeria</span>
+          <span class="tag tag-orange">AI-Native</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div style="max-width:1152px;margin:0 auto">
+    <h2 class="section-heading">Things I've Built</h2>
+    <p style="font-family:'Space Mono',monospace;font-size:13px;color:#666;margin-bottom:48px;margin-top:-40px">These aren't projects I supervised. I built them.</p>
+    <div class="projects-grid">
+
+      <!-- Moonframe -->
+      <a href="work/moonframe.html" class="project-card" id="card-0">
+        <div class="browser-bar">
+          <div class="dot dot-orange"></div>
+          <div class="dot dot-black"></div>
+          <div class="dot" style="background:#E5E7EB"></div>
+          <div class="url-bar">moonframe.app · operations, simplified</div>
+        </div>
+        <div class="preview-area">
+          <img src="moonframe-finances.png" alt="Moonframe Finances Dashboard" loading="lazy">
+          <span class="preview-badge">MVP · Live</span>
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Business Tool · Full Stack</span>
+          <div class="card-title">Moonframe</div>
+          <div class="card-desc">A business operations platform built for small businesses that collapse under their own disorganisation. Revenue, inventory, expenses, tasks — in one place. Built on Supabase.</div>
+          <span class="card-link">View Case Study →</span>
+        </div>
+      </a>
+
+      <!-- Social Analytics Tracker -->
+      <a href="work/analytics.html" class="project-card" id="card-1" style="animation-delay:0.15s">
+        <div class="browser-bar">
+          <div class="dot dot-orange"></div>
+          <div class="dot dot-black"></div>
+          <div class="dot" style="background:#E5E7EB"></div>
+          <div class="url-bar">curious-dashboard.onrender.com</div>
+        </div>
+        <div class="preview-area">
+          <img src="analytics-1.png" alt="Creamabell Analytics Dashboard" loading="lazy">
+          <span class="preview-badge">Built @ Ortho</span>
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Analytics · Internal Tool</span>
+          <div class="card-title">Social Analytics Tracker</div>
+          <div class="card-desc">Real-time dashboard tracking impressions, reach, and engagement across Instagram and Facebook. Built and deployed internally at Ortho Technologies. Gave the team visibility they didn't have before.</div>
+          <span class="card-link">View Project →</span>
+        </div>
+      </a>
+
+      <!-- Power BI Dashboard -->
+      <a href="work/powerbi.html" class="project-card" id="card-2" style="animation-delay:0.3s">
+        <div class="browser-bar">
+          <div class="dot dot-orange"></div>
+          <div class="dot dot-black"></div>
+          <div class="dot" style="background:#E5E7EB"></div>
+          <div class="url-bar">logistics-ops · 8-tab intelligence system</div>
+        </div>
+        <div class="preview-area" style="background:#0D1117;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px">
+          <div style="font-family:'Space Mono',monospace;font-size:32px;color:#F97316;font-weight:700">SQL</div>
+          <div style="font-family:'Space Mono',monospace;font-size:14px;color:rgba(255,255,255,0.4);letter-spacing:0.1em">→ DAX → POWER BI</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:0 16px">
+            <span style="font-family:'Space Mono',monospace;font-size:10px;color:#fff;border:2px solid rgba(249,115,22,0.5);padding:3px 8px">DRIVER</span>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;color:#fff;border:2px solid rgba(249,115,22,0.5);padding:3px 8px">ROUTE</span>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;color:#fff;border:2px solid rgba(249,115,22,0.5);padding:3px 8px">FLEET</span>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;color:#fff;border:2px solid rgba(249,115,22,0.5);padding:3px 8px">FUEL</span>
+            <span style="font-family:'Space Mono',monospace;font-size:10px;color:#F97316;border:2px solid #F97316;padding:3px 8px">+4 MORE</span>
+          </div>
+          <span class="preview-badge">Data Analytics</span>
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Power BI · SQL · DAX</span>
+          <div class="card-title">Logistics Operations Dashboard</div>
+          <div class="card-desc">8-tab operational intelligence system covering driver performance, route profitability, fleet utilization, fuel efficiency, safety, and seasonal patterns. SQL → DAX → Power BI end to end.</div>
+          <span class="card-link">View Dashboard →</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES / WRITING -->
+<section id="case-studies">
+  <div style="max-width:1152px;margin:0 auto">
+    <h2 class="section-heading">Writing</h2>
+    <div class="cases-wrap">
+      <a href="work/paas.html" class="case-row" id="cr-0">
+        <div class="case-num">01</div>
+        <div class="case-info">
+          <div class="case-title">The Invisible Infrastructure Nobody Talks About</div>
+          <div class="case-sub">PaaS · IaaS · BaaS · Deployment · How I Think About Servers</div>
+        </div>
+        <div class="case-arrow">→</div>
+      </a>
+      <a href="work/data-pm.html" class="case-row" id="cr-1">
+        <div class="case-num">02</div>
+        <div class="case-info">
+          <div class="case-title">How I Think About Data as a PM Who Builds Things</div>
+          <div class="case-sub">Analytics · Product Thinking · VyneStudios · Moonframe</div>
+        </div>
+        <div class="case-arrow">→</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div style="max-width:1152px;margin:0 auto">
+    <h2 class="section-heading" style="margin-bottom:12px">Skills & Tools</h2>
+    <p class="skills-sub">What I actually know vs what I just listed on LinkedIn</p>
+    <div class="skills-cloud">
+      <span class="skill-tag sk-orange" id="sk-0" style="transform:rotate(-2deg)">Product Strategy</span>
+      <span class="skill-tag sk-outline" id="sk-1" style="transform:rotate(2deg)">PRD Writing</span>
+      <span class="skill-tag sk-orange" id="sk-2" style="transform:rotate(-1deg)">Roadmapping</span>
+      <span class="skill-tag sk-outline" id="sk-3" style="transform:rotate(3deg)">User Research</span>
+      <span class="skill-tag sk-orange" id="sk-4" style="transform:rotate(-2deg)">A/B Testing</span>
+      <span class="skill-tag sk-outline" id="sk-5" style="transform:rotate(1deg)">RICE / MoSCoW</span>
+      <span class="skill-tag sk-orange" id="sk-6" style="transform:rotate(-3deg)">Sprint Planning</span>
+      <span class="skill-tag sk-outline" id="sk-7" style="transform:rotate(2deg)">HTML · CSS · JS</span>
+      <span class="skill-tag sk-orange" id="sk-8" style="transform:rotate(-1deg)">React Native</span>
+      <span class="skill-tag sk-outline" id="sk-9" style="transform:rotate(2deg)">Supabase</span>
+      <span class="skill-tag sk-orange" id="sk-10" style="transform:rotate(-2deg)">Make.com</span>
+      <span class="skill-tag sk-outline" id="sk-11" style="transform:rotate(1deg)">Zapier</span>
+      <span class="skill-tag sk-orange" id="sk-12" style="transform:rotate(-1deg)">ClickUp</span>
+      <span class="skill-tag sk-outline" id="sk-13" style="transform:rotate(3deg)">Notion</span>
+      <span class="skill-tag sk-orange" id="sk-14" style="transform:rotate(-2deg)">Power BI</span>
+      <span class="skill-tag sk-outline" id="sk-15" style="transform:rotate(1deg)">Advanced Excel</span>
+      <span class="skill-tag sk-orange" id="sk-16" style="transform:rotate(-1deg)">Go-to-Market</span>
+      <span class="skill-tag sk-outline" id="sk-17" style="transform:rotate(2deg)">Stakeholder Mgmt</span>
+      <span class="skill-tag sk-orange" id="sk-18" style="transform:rotate(-3deg)">Claude · AI Tooling</span>
+      <span class="skill-tag sk-outline" id="sk-19" style="transform:rotate(1deg)">Agile / Scrum</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <h2 class="contact-heading" id="c-head">LET'S BUILD<br>SOMETHING.</h2>
+    <p class="contact-sub" id="c-sub">Product roles, consulting, or interesting problems — I'm listening.</p>
+    <a href="mailto:semiares@gmail.com" class="btn-contact" id="c-btn">Email Me</a>
+    <div class="social-links" id="c-social">
+      <a href="https://linkedin.com/in/semilore-atolagbe" class="social-link" target="_blank">LinkedIn</a>
+      <a href="https://github.com/Semilore-James" class="social-link" target="_blank">GitHub</a>
+    </div>
+    <div class="copyright" id="c-copy">© 2026 ATOLAGBE SEMILORE JAMES · ABUJA, NIGERIA</div>
+  </div>
+</section>
+
+<script>
+function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+  });
+},{threshold:0.1});
+
+['about-img','about-text'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el)});
+[0,1].forEach(i=>{const c=document.getElementById('card-'+i);if(c){c.style.animationDelay=(i*0.15)+'s';io.observe(c)}});
+[0,1].forEach(i=>{const r=document.getElementById('cr-'+i);if(r){r.style.animationDelay=(i*0.1)+'s';io.observe(r)}});
+for(let i=0;i<20;i++){const s=document.getElementById('sk-'+i);if(s){s.style.animationDelay=(i*0.04)+'s';io.observe(s)}}
+['c-head','c-sub','c-btn','c-social','c-copy'].forEach((id,i)=>{
+  const el=document.getElementById(id);
+  if(el){el.style.animationDelay=(i*0.1)+'s';io.observe(el)}
+});
+
+document.querySelectorAll('.skill-tag').forEach(tag=>{
+  const orig=tag.style.transform;
+  tag.addEventListener('mouseenter',()=>{tag.style.transform='scale(1.06)';tag.style.zIndex=10});
+  tag.addEventListener('mouseleave',()=>{tag.style.transform=orig;tag.style.zIndex=1});
+});
+</script>
+</body>
+</html>

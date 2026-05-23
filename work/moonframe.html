@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moonframe — Atolagbe Semilore James</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:#fff;color:#000;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bottom:4px solid #000;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 80px}
+.nav-logo{display:flex;align-items:center;gap:0;cursor:pointer;text-decoration:none}
+.logo-mark{width:44px;height:44px;border:4px solid #000;background:#fff;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:3px 3px 0 #000;flex-shrink:0}
+.logo-mark-inner{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;color:#000;letter-spacing:-0.05em}
+.logo-accent{position:absolute;bottom:-4px;right:-4px;width:10px;height:10px;background:#F97316;border:2px solid #000}
+.logo-wordmark{font-family:'Space Mono',monospace;font-weight:700;font-size:20px;letter-spacing:-0.02em;color:#000;margin-left:12px}
+.nav-back{font-family:'Space Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:#000;text-decoration:none;border-bottom:2px solid #F97316;padding-bottom:2px}
+.nav-back:hover{color:#F97316}
+
+/* HERO */
+.case-hero{padding-top:72px;background:#000;min-height:480px;display:flex;align-items:flex-end;padding-left:80px;padding-right:80px;padding-bottom:64px;position:relative;overflow:hidden}
+.case-hero-bg{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(249,115,22,0.04) 40px,rgba(249,115,22,0.04) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(249,115,22,0.04) 40px,rgba(249,115,22,0.04) 41px)}
+.case-hero-content{position:relative;z-index:2;max-width:900px}
+.case-eyebrow{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#F97316;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.case-eyebrow::before{content:'';display:inline-block;width:32px;height:3px;background:#F97316}
+.case-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(48px,7vw,88px);line-height:0.92;letter-spacing:-0.03em;color:#fff;margin-bottom:32px}
+.case-title span{color:#F97316}
+.case-meta{display:flex;gap:32px;flex-wrap:wrap}
+.meta-item{display:flex;flex-direction:column;gap:4px}
+.meta-label{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.4)}
+.meta-value{font-family:'Space Mono',monospace;font-size:14px;color:#fff;font-weight:700}
+
+/* BODY */
+.case-body{max-width:760px;margin:0 auto;padding:80px 40px}
+.case-body h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:32px;letter-spacing:-0.02em;color:#000;margin-bottom:20px;margin-top:64px;padding-top:64px;border-top:4px solid #000}
+.case-body h2:first-of-type{margin-top:0;padding-top:0;border-top:none}
+.case-body p{font-size:18px;line-height:1.75;color:#111;margin-bottom:24px}
+.case-body strong{font-weight:700;color:#000}
+
+/* STAT ROW */
+.stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:4px solid #000;margin:48px 0;box-shadow:6px 6px 0 #000}
+.stat-item{padding:32px 24px;border-right:4px solid #000;text-align:center}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:48px;letter-spacing:-0.03em;color:#F97316;line-height:1;margin-bottom:8px}
+.stat-label{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#555}
+
+/* SCREENSHOT GALLERY */
+.gallery{margin:48px 0}
+.gallery-label{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:#888;margin-bottom:16px}
+.screenshot{border:4px solid #000;box-shadow:6px 6px 0 #000;overflow:hidden;margin-bottom:32px}
+.screenshot img{width:100%;display:block}
+.screenshot-caption{background:#F9F9F9;border-top:4px solid #000;padding:12px 16px;font-family:'Space Mono',monospace;font-size:12px;color:#444;letter-spacing:0.05em}
+
+/* SCREENSHOT GRID */
+.screenshot-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0}
+.screenshot-grid .screenshot{margin-bottom:0}
+
+/* PULL QUOTE */
+.pull-quote{border-left:8px solid #F97316;padding:24px 32px;margin:48px 0;background:#FFF7ED}
+.pull-quote p{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:500;line-height:1.5;color:#000;font-style:italic;margin:0}
+
+/* TAG ROW */
+.tag-row{display:flex;gap:10px;flex-wrap:wrap;margin:32px 0}
+.tag{display:inline-block;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:6px 12px;border:3px solid #000;border-radius:2px}
+.tag-orange{background:#F97316;color:#fff}
+.tag-outline{background:#fff;color:#000}
+
+/* STATUS BANNER */
+.status-banner{border:4px solid #000;background:#000;padding:32px;margin:48px 0;box-shadow:6px 6px 0 #F97316;display:flex;align-items:center;gap:24px}
+.status-dot{width:14px;height:14px;border-radius:50%;background:#F97316;flex-shrink:0;animation:pulse 2s ease infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.status-text{font-family:'Space Mono',monospace;font-size:14px;color:#fff;letter-spacing:0.05em;line-height:1.6}
+.status-text strong{color:#F97316}
+
+/* BACK BUTTON */
+.back-section{text-align:center;padding:80px 0 40px;border-top:4px solid #000;margin-top:80px}
+.btn-back{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;border:4px solid #000;background:#F97316;color:#fff;text-decoration:none;box-shadow:4px 4px 0 #000;transition:box-shadow 0.2s,transform 0.2s}
+.btn-back:hover{box-shadow:6px 6px 0 #000;transform:translate(-2px,-2px)}
+
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .case-hero{padding:100px 24px 48px}
+  .case-body{padding:48px 24px}
+  .stat-row{grid-template-columns:1fr}
+  .stat-item{border-right:none;border-bottom:4px solid #000}
+  .stat-item:last-child{border-bottom:none}
+  .screenshot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html">
+    <div class="logo-mark">
+      <div class="logo-mark-inner">ASJ</div>
+      <div class="logo-accent"></div>
+    </div>
+    <span class="logo-wordmark">Semilore</span>
+  </a>
+  <a href="../index.html#work" class="nav-back">← Back to Work</a>
+</nav>
+
+<!-- HERO -->
+<div class="case-hero">
+  <div class="case-hero-bg"></div>
+  <div class="case-hero-content">
+    <div class="case-eyebrow">Case Study · Product Build</div>
+    <h1 class="case-title">Moon<span>frame</span></h1>
+    <div class="case-meta">
+      <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Solo Builder / PM</span></div>
+      <div class="meta-item"><span class="meta-label">Stack</span><span class="meta-value">Supabase · React</span></div>
+      <div class="meta-item"><span class="meta-label">Status</span><span class="meta-value">MVP · In Progress</span></div>
+      <div class="meta-item"><span class="meta-label">Stage</span><span class="meta-value">Active Development</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="case-body">
+
+  <h2>The Problem I Was Watching</h2>
+  <p>Small businesses in Nigeria don't fail because they have bad products. They fail because they have no operational memory. Revenue goes into a notebook. Inventory lives in someone's head. Tasks are WhatsApp messages that disappear. The business runs on the founder's memory, and when the founder is overwhelmed — which is always — things fall through.</p>
+  <p>I watched this happen repeatedly. The tools that exist either cost too much, assume too much technical knowledge, or solve one problem while ignoring five others. So I built Moonframe.</p>
+
+  <div class="pull-quote">
+    <p>"The infrastructure beneath all of that — the servers, the deployment pipeline, the networking — was a layer I had never looked at directly. They just seemed to be."</p>
+  </div>
+
+  <h2>What It Does</h2>
+  <p>Moonframe is an all-in-one business operations platform. Revenue tracking, inventory management, invoicing, task management, and business intelligence reports — in a single dashboard. It runs on Supabase, which gave me authentication, a real-time database, and file storage without building a backend from scratch.</p>
+
+  <div class="tag-row">
+    <span class="tag tag-orange">Revenue Tracking</span>
+    <span class="tag tag-outline">Inventory</span>
+    <span class="tag tag-orange">Invoicing</span>
+    <span class="tag tag-outline">Task Board</span>
+    <span class="tag tag-orange">Daily Reports</span>
+    <span class="tag tag-outline">Business Intelligence</span>
+    <span class="tag tag-orange">Multi-location</span>
+  </div>
+
+  <div class="gallery">
+    <div class="gallery-label">The Product — Live Screens</div>
+    <div class="screenshot">
+      <img src="../moonframe-splash.png" alt="Moonframe splash screen">
+      <div class="screenshot-caption">SPLASH SCREEN · Operations, Simplified.</div>
+    </div>
+
+    <div class="screenshot">
+      <img src="../moonframe-finances.png" alt="Moonframe Finances Dashboard">
+      <div class="screenshot-caption">FINANCES · Total income, expenses, net profit, profit margin — real time.</div>
+    </div>
+
+    <div class="screenshot-grid">
+      <div class="screenshot">
+        <img src="../moonframe-invoices.png" alt="Moonframe Invoices">
+        <div class="screenshot-caption">RECEIPTS & INVOICES</div>
+      </div>
+      <div class="screenshot">
+        <img src="../moonframe-operations.png" alt="Moonframe Operations">
+        <div class="screenshot-caption">OPERATIONS · Customers, Suppliers, Staff</div>
+      </div>
+    </div>
+
+    <div class="screenshot-grid">
+      <div class="screenshot">
+        <img src="../moonframe-tasks.png" alt="Moonframe Tasks">
+        <div class="screenshot-caption">TASKS · Kanban board</div>
+      </div>
+      <div class="screenshot">
+        <img src="../moonframe-reports.png" alt="Moonframe Reports">
+        <div class="screenshot-caption">REPORTS · Daily summary + Moonframe Insights</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>What I Built It With</h2>
+  <p>The stack choice was deliberate. Supabase handles authentication, the Postgres database, real-time subscriptions, and file storage — which means I didn't have to write, deploy, or maintain a backend. That freed me to focus on the product layer: what data to capture, how to surface it, and what the interface should feel like for someone who isn't technical.</p>
+  <p>The frontend is built in React. Multi-location support is baked in from day one, because small businesses in Nigeria often operate across more than one site. The reporting layer includes a "Moonframe Insights" feature that generates natural language summaries of business performance.</p>
+
+  <h2>What I Learned Building It</h2>
+  <p>The most important thing I learned had nothing to do with code. It was about infrastructure. Before Moonframe, I knew Supabase ran the app the way most people know a plane flies — functionally, without looking underneath. Building something real forced me to understand the layer beneath: what a server actually is, why PaaS platforms exist, and what deployment means step by step.</p>
+  <p>That understanding changed how I think about every product decision. Choosing a platform isn't a technical checkbox — it's a question of cost, control, scale, and what the product will need next. I wrote a full piece about it.</p>
+
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num">7</div>
+      <div class="stat-label">Core Modules Built</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Solo Builder</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-label">Backend Written From Scratch</div>
+    </div>
+  </div>
+
+  <h2>Where It Is Now</h2>
+  <p>Moonframe is an active MVP. The core modules — finances, invoicing, operations, inventory, tasks, and reports — are built and working. I'm currently iterating on the intelligence layer and planning the next round of user testing with small business owners in Abuja.</p>
+
+  <div class="status-banner">
+    <div class="status-dot"></div>
+    <div class="status-text"><strong>Active Development</strong> — Core MVP is live. Intelligence layer in progress. Not yet publicly hosted. Watch this space.</div>
+  </div>
+
+</div>
+
+<div style="max-width:760px;margin:0 auto;padding:0 40px">
+  <div class="back-section">
+    <a href="../index.html" class="btn-back">← Back to Portfolio</a>
+  </div>
+</div>
+
+</body>
+</html>

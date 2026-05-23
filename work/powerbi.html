@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logistics Operations Dashboard — Atolagbe Semilore James</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:#fff;color:#000;overflow-x:hidden}
+
+nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bottom:4px solid #000;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:0 80px}
+.nav-logo{display:flex;align-items:center;cursor:pointer;text-decoration:none}
+.logo-mark{width:44px;height:44px;border:4px solid #000;background:#fff;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:3px 3px 0 #000;flex-shrink:0}
+.logo-mark-inner{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;color:#000;letter-spacing:-0.05em}
+.logo-accent{position:absolute;bottom:-4px;right:-4px;width:10px;height:10px;background:#F97316;border:2px solid #000}
+.logo-wordmark{font-family:'Space Mono',monospace;font-weight:700;font-size:20px;letter-spacing:-0.02em;color:#000;margin-left:12px}
+.nav-back{font-family:'Space Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:#000;text-decoration:none;border-bottom:2px solid #F97316;padding-bottom:2px}
+.nav-back:hover{color:#F97316}
+
+/* HERO */
+.case-hero{padding-top:72px;background:#0D1117;min-height:460px;display:flex;align-items:flex-end;padding-left:80px;padding-right:80px;padding-bottom:64px;position:relative;overflow:hidden}
+.hero-grid-bg{position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 48px,rgba(249,115,22,0.07) 48px,rgba(249,115,22,0.07) 49px),repeating-linear-gradient(90deg,transparent,transparent 48px,rgba(249,115,22,0.07) 48px,rgba(249,115,22,0.07) 49px)}
+.hero-content{position:relative;z-index:2;max-width:960px;width:100%}
+.hero-eyebrow{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#F97316;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';display:inline-block;width:32px;height:3px;background:#F97316}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:clamp(40px,6vw,80px);line-height:0.93;letter-spacing:-0.03em;color:#fff;margin-bottom:16px}
+.hero-title span{color:#F97316}
+.hero-subtitle{font-family:'Space Mono',monospace;font-size:14px;color:rgba(255,255,255,0.5);letter-spacing:0.08em;margin-bottom:36px}
+.hero-meta{display:flex;gap:32px;flex-wrap:wrap}
+.meta-item{display:flex;flex-direction:column;gap:4px}
+.meta-label{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.35)}
+.meta-value{font-family:'Space Mono',monospace;font-size:13px;color:#fff;font-weight:700}
+
+/* PIPELINE STRIP */
+.pipeline-strip{background:#F97316;border-top:4px solid #000;border-bottom:4px solid #000;padding:20px 80px;display:flex;align-items:center;gap:0;overflow-x:auto}
+.pipe-step{display:flex;align-items:center;gap:0;flex-shrink:0}
+.pipe-label{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:#000;padding:0 16px}
+.pipe-arrow{font-size:20px;color:#000;opacity:0.5;flex-shrink:0}
+
+/* BODY */
+.case-body{max-width:880px;margin:0 auto;padding:80px 40px}
+.case-body h2{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.02em;color:#000;margin-bottom:20px;margin-top:64px;padding-top:64px;border-top:4px solid #000}
+.case-body h2:first-of-type{margin-top:0;padding-top:0;border-top:none}
+.case-body p{font-size:18px;line-height:1.8;color:#111;margin-bottom:24px}
+
+/* STAT ROW */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:4px solid #000;margin:40px 0;box-shadow:6px 6px 0 #000}
+.stat-item{padding:24px 20px;border-right:4px solid #000;text-align:center}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:36px;letter-spacing:-0.03em;color:#F97316;line-height:1;margin-bottom:6px}
+.stat-label{font-family:'Space Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:0.12em;color:#555;line-height:1.4}
+
+/* TAB GALLERY */
+.gallery-section{margin:64px 0}
+.gallery-heading{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.2em;color:#888;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+.gallery-heading::after{content:'';flex:1;height:2px;background:#e5e7eb}
+
+/* TAB SWITCHER */
+.tab-nav{display:flex;flex-wrap:wrap;gap:0;border:4px solid #000;margin-bottom:0;box-shadow:6px 6px 0 #000}
+.tab-btn{font-family:'Space Mono',monospace;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;padding:12px 16px;border:none;border-right:3px solid #000;background:#fff;color:#888;cursor:pointer;transition:background 0.15s,color 0.15s;flex:1;min-width:80px;text-align:center}
+.tab-btn:last-child{border-right:none}
+.tab-btn:hover{background:#FFF7ED;color:#000}
+.tab-btn.active{background:#F97316;color:#fff}
+.tab-panels{border:4px solid #000;border-top:none;box-shadow:6px 6px 0 #000;overflow:hidden}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+.tab-panel img{width:100%;display:block}
+.tab-caption{background:#0D1117;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.tab-caption-text{font-family:'Space Mono',monospace;font-size:12px;color:rgba(255,255,255,0.6);letter-spacing:0.05em}
+.tab-caption-metric{font-family:'Space Mono',monospace;font-size:12px;color:#F97316;font-weight:700}
+
+/* BREAKDOWN TABLE */
+.tab-breakdown{border:4px solid #000;margin:48px 0;overflow:hidden;box-shadow:6px 6px 0 #000}
+.breakdown-header{background:#000;padding:16px 24px;display:grid;grid-template-columns:48px 1fr 2fr;gap:16px;align-items:center}
+.breakdown-header span{font-family:'Space Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.4)}
+.breakdown-row{display:grid;grid-template-columns:48px 1fr 2fr;gap:16px;align-items:start;padding:20px 24px;border-top:3px solid #000;transition:background 0.15s}
+.breakdown-row:hover{background:#FFF7ED}
+.breakdown-num{font-family:'Space Mono',monospace;font-weight:700;font-size:18px;color:#F97316}
+.breakdown-tab{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:#000}
+.breakdown-desc{font-family:'Space Grotesk',sans-serif;font-size:14px;line-height:1.6;color:#444}
+
+/* TOOLS ROW */
+.tools-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:4px solid #000;margin:48px 0;box-shadow:6px 6px 0 #000;overflow:hidden}
+.tool-card{padding:28px 24px;border-right:4px solid #000;text-align:center}
+.tool-card:last-child{border-right:none}
+.tool-icon{font-family:'Space Mono',monospace;font-size:28px;color:#F97316;margin-bottom:12px}
+.tool-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:16px;color:#000;margin-bottom:8px}
+.tool-desc{font-family:'Space Grotesk',sans-serif;font-size:13px;color:#555;line-height:1.5}
+
+/* PULL QUOTE */
+.pull-quote{border-left:8px solid #F97316;padding:24px 32px;margin:48px 0;background:#FFF7ED}
+.pull-quote p{font-family:'Space Grotesk',sans-serif;font-size:22px;font-weight:500;line-height:1.5;color:#000;font-style:italic;margin:0}
+
+/* DOWNLOAD */
+.download-bar{border:4px solid #000;padding:28px 32px;background:#000;display:flex;align-items:center;justify-content:space-between;gap:24px;margin:48px 0;box-shadow:6px 6px 0 #F97316;flex-wrap:wrap}
+.download-text{font-family:'Space Grotesk',sans-serif;font-size:16px;color:#fff;line-height:1.5}
+.download-text strong{color:#F97316}
+.btn-download{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.1em;text-transform:uppercase;padding:14px 24px;border:3px solid #fff;background:#F97316;color:#fff;text-decoration:none;box-shadow:4px 4px 0 #fff;transition:box-shadow 0.2s,transform 0.2s;white-space:nowrap}
+.btn-download:hover{box-shadow:6px 6px 0 #fff;transform:translate(-2px,-2px)}
+
+.back-section{text-align:center;padding:80px 0 40px;border-top:4px solid #000;margin-top:80px}
+.btn-back{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:14px;letter-spacing:0.1em;text-transform:uppercase;padding:14px 28px;border:4px solid #000;background:#F97316;color:#fff;text-decoration:none;box-shadow:4px 4px 0 #000;transition:box-shadow 0.2s,transform 0.2s}
+.btn-back:hover{box-shadow:6px 6px 0 #000;transform:translate(-2px,-2px)}
+
+@media(max-width:768px){
+  nav{padding:0 24px}
+  .case-hero{padding:100px 24px 48px}
+  .pipeline-strip{padding:16px 24px}
+  .pipe-label{font-size:11px;padding:0 10px}
+  .case-body{padding:48px 24px}
+  .stat-row{grid-template-columns:1fr 1fr}
+  .stat-item:nth-child(2){border-right:none}
+  .stat-item:nth-child(1),.stat-item:nth-child(2){border-bottom:4px solid #000}
+  .tools-row{grid-template-columns:1fr}
+  .tool-card{border-right:none;border-bottom:4px solid #000}
+  .tool-card:last-child{border-bottom:none}
+  .breakdown-row{grid-template-columns:40px 1fr;grid-template-rows:auto auto}
+  .breakdown-desc{grid-column:2;margin-top:-4px}
+  .tab-btn{font-size:9px;padding:10px 8px}
+  .download-bar{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html">
+    <div class="logo-mark">
+      <div class="logo-mark-inner">ASJ</div>
+      <div class="logo-accent"></div>
+    </div>
+    <span class="logo-wordmark">Semilore</span>
+  </a>
+  <a href="../index.html#work" class="nav-back">← Back to Work</a>
+</nav>
+
+<!-- HERO -->
+<div class="case-hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Data Analytics · Power BI</div>
+    <h1 class="hero-title">Logistics <span>Operations</span><br>Dashboard</h1>
+    <p class="hero-subtitle">8-TAB INTELLIGENCE SYSTEM · SQL → DAX → POWER BI</p>
+    <div class="hero-meta">
+      <div class="meta-item"><span class="meta-label">Tool</span><span class="meta-value">Power BI + DAX</span></div>
+      <div class="meta-item"><span class="meta-label">Data Layer</span><span class="meta-value">SQL</span></div>
+      <div class="meta-item"><span class="meta-label">Tabs Built</span><span class="meta-value">8 Dashboards</span></div>
+      <div class="meta-item"><span class="meta-label">Domain</span><span class="meta-value">Logistics / Fleet Ops</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PIPELINE STRIP -->
+<div class="pipeline-strip">
+  <div class="pipe-step"><span class="pipe-label">Raw Dataset</span><span class="pipe-arrow">→</span></div>
+  <div class="pipe-step"><span class="pipe-label">SQL Cleaning</span><span class="pipe-arrow">→</span></div>
+  <div class="pipe-step"><span class="pipe-label">DB Modelling</span><span class="pipe-arrow">→</span></div>
+  <div class="pipe-step"><span class="pipe-label">Power BI</span><span class="pipe-arrow">→</span></div>
+  <div class="pipe-step"><span class="pipe-label">DAX Measures</span><span class="pipe-arrow">→</span></div>
+  <div class="pipe-step"><span class="pipe-label">8-Tab Dashboard</span></div>
+</div>
+
+<!-- BODY -->
+<div class="case-body">
+
+  <h2>What This Is</h2>
+  <p>A full operational intelligence system for a logistics company — built from a raw dataset using SQL for data cleaning and database modelling, then Power BI and DAX for the visualization and calculated measures layer. Eight dashboards, each answering a distinct operational question a logistics business actually needs to run.</p>
+  <p>The brief was analytical. The thinking behind it was product: what does a logistics operations manager need to see to make good decisions, and how do you structure that across eight views without losing the thread between them?</p>
+
+  <div class="pull-quote">
+    <p>"The brief was analytical. The thinking behind it was product: what does an operations manager actually need to see?"</p>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num">8</div>
+      <div class="stat-label">Dashboard Tabs</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">124</div>
+      <div class="stat-label">Active Drivers Tracked</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">120</div>
+      <div class="stat-label">Fleet Trucks Modelled</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">200</div>
+      <div class="stat-label">Customer Accounts</div>
+    </div>
+  </div>
+
+  <h2>The Dashboard — All 8 Tabs</h2>
+
+  <!-- TAB GALLERY -->
+  <div class="gallery-section">
+    <div class="gallery-heading">Interactive Preview</div>
+
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab(0)">01 Driver</button>
+      <button class="tab-btn" onclick="switchTab(1)">02 Route</button>
+      <button class="tab-btn" onclick="switchTab(2)">03 Fleet</button>
+      <button class="tab-btn" onclick="switchTab(3)">04 Maint.</button>
+      <button class="tab-btn" onclick="switchTab(4)">05 Fuel</button>
+      <button class="tab-btn" onclick="switchTab(5)">06 Customer</button>
+      <button class="tab-btn" onclick="switchTab(6)">07 Safety</button>
+      <button class="tab-btn" onclick="switchTab(7)">08 Seasonal</button>
+    </div>
+
+    <div class="tab-panels">
+      <div class="tab-panel active" id="tab-0">
+        <img src="../dashboard-page-1.jpg" alt="Driver Performance Dashboard">
+        <div class="tab-caption">
+          <span class="tab-caption-text">01 · DRIVER PERFORMANCE · Top 10 by revenue/mile, monthly MPG distribution, full roster</span>
+          <span class="tab-caption-metric">Rev/Mile: $2.15 avg · 44.60% on-time rate</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-1">
+        <img src="../dashboard-page-2.jpg" alt="Route Profitability Dashboard">
+        <div class="tab-caption">
+          <span class="tab-caption-text">02 · ROUTE PROFITABILITY · Revenue vs fuel cost per lane, net margin ranking by origin state</span>
+          <span class="tab-caption-metric">58 Active Lanes · 82.76% Profitable</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-2">
+        <img src="../dashboard-page-3.jpg" alt="Fleet Utilization Dashboard">
+        <div class="tab-caption">
+          <span class="tab-caption-text">03 · FLEET UTILIZATION · Miles by make, revenue per asset, status breakdown across 120 trucks</span>
+          <span class="tab-caption-metric">83.04% Utilization Rate · $77.7K Rev/Asset</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-3">
+        <img src="../dashboard-page-4.jpg" alt="Maintenance Analysis Dashboard">
+        <div class="tab-caption">
+          <span class="tab-caption-text">04 · MAINTENANCE · Cost by type, downtime vs revenue impact across 2022–2023</span>
+          <span class="tab-caption-metric">2,920 Events · $0.035 Cost/Mile · 24.58h Avg Downtime</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-4">
+        <img src="../dashboard-page-5.jpg" alt="Fuel Efficiency Dashboard">
+        <div class="tab-caption">
+          <span class="tab-caption-text">05 · FUEL EFFICIENCY · MPG trend per month, fuel cost by route origin, 196K total purchases</span>
+          <span class="tab-caption-metric">$95.59M Total Fuel Spend · $3.9 Avg/Gallon · 6.50 Fleet MPG</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-5">
+        <img src="../dashboard-page-6.jpg" alt="Customer Analysis Dashboard">
+        <div class="tab-caption">
+          <span class="tab-caption-text">06 · CUSTOMER · Revenue by account, account type mix (contract/spot/dedicated), service levels</span>
+          <span class="tab-caption-metric">200 Accounts · 85.4K Total Loads · $4.99M Top Potential</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-6">
+        <img src="../dashboard-page-7.jpg" alt="Safety Metrics Dashboard">
+        <div class="tab-caption">
+          <span class="tab-caption-text">07 · SAFETY · Incidents by type, preventable vs non-preventable split, injury rate</span>
+          <span class="tab-caption-metric">170 Incidents · 37.65% Preventable · 19.41% Injury Rate</span>
+        </div>
+      </div>
+      <div class="tab-panel" id="tab-7">
+        <img src="../dashboard-page-8.jpg" alt="Seasonal Analysis Dashboard">
+        <div class="tab-caption">
+          <span class="tab-caption-text">08 · SEASONAL · Rate/mile fluctuation, load volume by month, contract/dedicated/spot split</span>
+          <span class="tab-caption-metric">Peak: Oct @ $2.25/mile · Q4 strongest quarter</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>What Each Tab Is Actually Answering</h2>
+
+  <div class="tab-breakdown">
+    <div class="breakdown-header">
+      <span>#</span><span>Tab</span><span>The Operational Question</span>
+    </div>
+    <div class="breakdown-row">
+      <div class="breakdown-num">01</div>
+      <div class="breakdown-tab">Driver Performance</div>
+      <div class="breakdown-desc">Who are my top earners per mile, and is there a pattern in MPG across the fleet across the year? Surfaces underperformers and seasonal driver efficiency shifts.</div>
+    </div>
+    <div class="breakdown-row">
+      <div class="breakdown-num">02</div>
+      <div class="breakdown-tab">Route Profitability</div>
+      <div class="breakdown-desc">Which lanes are actually making money after fuel costs, and which are burning margin quietly? Revenue vs fuel cost per lane reveals the routes worth protecting and the ones worth dropping.</div>
+    </div>
+    <div class="breakdown-row">
+      <div class="breakdown-num">03</div>
+      <div class="breakdown-tab">Fleet Utilization</div>
+      <div class="breakdown-desc">Are we sweating our assets, or are trucks sitting? Utilization rate, revenue per asset, and miles by make tell you whether your capital is working or parked.</div>
+    </div>
+    <div class="breakdown-row">
+      <div class="breakdown-num">04</div>
+      <div class="breakdown-tab">Maintenance</div>
+      <div class="breakdown-desc">What's maintenance actually costing us, where is it concentrated, and is downtime trending up or down over time? The 2022–2023 comparison surfaces whether things are getting better or quietly worse.</div>
+    </div>
+    <div class="breakdown-row">
+      <div class="breakdown-num">05</div>
+      <div class="breakdown-tab">Fuel Efficiency</div>
+      <div class="breakdown-desc">At $95.59M in total fuel spend, even small MPG improvements compound massively. The monthly MPG trend and route-level fuel cost breakdown show exactly where to focus.</div>
+    </div>
+    <div class="breakdown-row">
+      <div class="breakdown-num">06</div>
+      <div class="breakdown-tab">Customer Analysis</div>
+      <div class="breakdown-desc">Which accounts are driving the most revenue, and what's the mix between contract, spot, and dedicated loads? Service level data shows where relationship risk sits.</div>
+    </div>
+    <div class="breakdown-row">
+      <div class="breakdown-num">07</div>
+      <div class="breakdown-tab">Safety</div>
+      <div class="breakdown-desc">Of 170 incidents, 37.65% were preventable — that's the number a safety program needs to move. Breaking down by type (accidents, DOT violations, equipment damage) shows where to intervene first.</div>
+    </div>
+    <div class="breakdown-row">
+      <div class="breakdown-num">08</div>
+      <div class="breakdown-tab">Seasonal</div>
+      <div class="breakdown-desc">Rate per mile peaks in October and bottoms in February. Load volume follows its own curve. Planning resourcing, contracts, and pricing without this view means leaving money on the table twice a year.</div>
+    </div>
+  </div>
+
+  <h2>The Stack</h2>
+
+  <div class="tools-row">
+    <div class="tool-card">
+      <div class="tool-icon">⬡</div>
+      <div class="tool-name">SQL</div>
+      <div class="tool-desc">Data cleaning, database modelling, and structuring the relationships between driver, route, fleet, and financial tables before anything hit Power BI.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">◈</div>
+      <div class="tool-name">DAX</div>
+      <div class="tool-desc">Calculated measures for revenue per mile, utilization rate, net margin per lane, seasonal rate averages, and the preventable incident split. The logic layer that makes the visuals meaningful.</div>
+    </div>
+    <div class="tool-card">
+      <div class="tool-icon">▦</div>
+      <div class="tool-name">Power BI</div>
+      <div class="tool-desc">Eight dashboard tabs, consistent layout and navigation across all views, with cross-filtering so any selection on one chart updates the rest of the page.</div>
+    </div>
+  </div>
+
+  <div class="download-bar">
+    <div class="download-text"><strong>Full Dashboard PDF</strong> — All 8 tabs, full resolution. Every chart, every metric, every data table.</div>
+    <a href="../powerbi.pdf" class="btn-download" download="Semilore_Atolagbe_Logistics_Dashboard.pdf">↓ Download Full PDF</a>
+  </div>
+
+</div>
+
+<div style="max-width:880px;margin:0 auto;padding:0 40px">
+  <div class="back-section">
+    <a href="../index.html" class="btn-back">← Back to Portfolio</a>
+  </div>
+</div>
+
+<script>
+function switchTab(index) {
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', i === index);
+  });
+  document.querySelectorAll('.tab-panel').forEach((panel, i) => {
+    panel.classList.toggle('active', i === index);
+  });
+}
+</script>
+
+</body>
+</html>
