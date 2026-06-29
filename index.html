@@ -377,6 +377,13 @@ function toggleMenu(){
   document.getElementById('navLinks').classList.toggle('open');
 }
 
+// Close mobile menu when nav links are clicked
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.getElementById('navLinks').classList.remove('open');
+  });
+});
+
 const io = new IntersectionObserver((entries)=>{
   entries.forEach(e=>{
     if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}

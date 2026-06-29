@@ -427,9 +427,51 @@ body {
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 900px) {
-  .clue-card { width: 200px; }
-  .polaroid-card { width: 180px; }
-  .case-brief { width: 90%; font-size: 0.8rem; }
+  body {
+    overflow-y: auto;
+  }
+  .corkboard {
+    height: auto;
+    min-height: 100vh;
+    padding: 80px 20px 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+  }
+  .case-brief {
+    position: static !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 600px !important;
+    margin-bottom: 10px;
+  }
+  .clue-card, .polaroid-card, .offer-card {
+    position: static !important;
+    transform: rotate(0deg) !important;
+    width: 100% !important;
+    max-width: 340px !important;
+    margin: 0 !important;
+  }
+  #ch1-tunde {
+    order: -1; /* Put suspect near the top, after brief */
+  }
+  #ch1-offer {
+    order: 10; /* Put offer letter at the bottom */
+  }
+  .string-overlay {
+    display: none; /* Hide red strings on mobile */
+  }
+  .case-stamp {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-15deg);
+  }
+  .top-bar {
+    position: fixed;
+    top: 16px; left: 16px; right: 16px;
+    z-index: 100;
+  }
 }
 </style>
 </head>
@@ -544,7 +586,7 @@ body {
   <div class="modal-container">
     <button class="modal-close-btn" onclick="closeModal('modal-dates')">X</button>
     <h2 class="modal-title">LEAD 01 // TIME OBFUSCATION DETECTED</h2>
-    <svg class="flowchart-svg">
+    <svg class="flowchart-svg" viewBox="0 0 740 320">
       <g class="anim-node"><rect class="node-rect danger" x="20" y="110" width="180" height="60"/><text x="30" y="135" font-weight="bold">14,519 Broken Dates</text><text x="30" y="152">Mixed formats &amp; serials</text></g>
       <g class="anim-node"><rect class="node-rect" x="280" y="110" width="190" height="60"/><text x="290" y="135" font-weight="bold">Sabotage or Ignorance?</text><text x="290" y="152">Quarters contradicted month</text></g>
       <g class="anim-node"><rect class="node-rect success" x="540" y="110" width="180" height="60"/><text x="550" y="135" font-weight="bold">The Resolution</text><text x="550" y="152">Standardized via formulas</text></g>
@@ -564,7 +606,7 @@ body {
   <div class="modal-container">
     <button class="modal-close-btn" onclick="closeModal('modal-regions')">X</button>
     <h2 class="modal-title">LEAD 02 // GEOGRAPHIC SPLIT DETECTED</h2>
-    <svg class="flowchart-svg">
+    <svg class="flowchart-svg" viewBox="0 0 740 320">
       <g class="anim-node"><rect class="node-rect danger" x="20" y="110" width="180" height="60"/><text x="30" y="135" font-weight="bold">14 Region Variants</text><text x="30" y="152">North Central, NC, NW, etc.</text></g>
       <g class="anim-node"><rect class="node-rect" x="280" y="110" width="190" height="60"/><text x="290" y="135" font-weight="bold">Sabotage or Ignorance?</text><text x="290" y="152">Inability to track area sales</text></g>
       <g class="anim-node"><rect class="node-rect success" x="540" y="110" width="180" height="60"/><text x="550" y="135" font-weight="bold">The Resolution</text><text x="550" y="152">Standardized mapping table</text></g>
@@ -584,7 +626,7 @@ body {
   <div class="modal-container">
     <button class="modal-close-btn" onclick="closeModal('modal-promo')">X</button>
     <h2 class="modal-title">LEAD 03 // PROMOTIONAL BLIND SPOT</h2>
-    <svg class="flowchart-svg">
+    <svg class="flowchart-svg" viewBox="0 0 740 320">
       <g class="anim-node"><rect class="node-rect danger" x="20" y="110" width="180" height="60"/><text x="30" y="135" font-weight="bold">13 Different Flags</text><text x="30" y="152">yes, Y, 1, True, No, N, 0</text></g>
       <g class="anim-node"><rect class="node-rect" x="280" y="110" width="190" height="60"/><text x="290" y="135" font-weight="bold">Sabotage or Ignorance?</text><text x="290" y="152">Hiding undocumented discounts</text></g>
       <g class="anim-node"><rect class="node-rect success" x="540" y="110" width="180" height="60"/><text x="550" y="135" font-weight="bold">The Resolution</text><text x="550" y="152">Unified to TRUE/FALSE flags</text></g>
@@ -604,7 +646,7 @@ body {
   <div class="modal-container">
     <button class="modal-close-btn" onclick="closeModal('modal-nulls')">X</button>
     <h2 class="modal-title">LEAD 04 // MISSING EVIDENCE</h2>
-    <svg class="flowchart-svg">
+    <svg class="flowchart-svg" viewBox="0 0 740 320">
       <g class="anim-node"><rect class="node-rect danger" x="20" y="110" width="180" height="60"/><text x="30" y="135" font-weight="bold">19,045 Null Revenues</text><text x="30" y="152">Empty unit prices &amp; totals</text></g>
       <g class="anim-node"><rect class="node-rect" x="280" y="110" width="190" height="60"/><text x="290" y="135" font-weight="bold">Sabotage or Ignorance?</text><text x="290" y="152">Hiding unrecorded sales</text></g>
       <g class="anim-node"><rect class="node-rect success" x="540" y="110" width="180" height="60"/><text x="550" y="135" font-weight="bold">The Resolution</text><text x="550" y="152">Recalculated from master list</text></g>
@@ -624,7 +666,7 @@ body {
   <div class="modal-container">
     <button class="modal-close-btn" onclick="closeModal('modal-revenue')">X</button>
     <h2 class="modal-title">LEAD 05 // THE DISAPPEARING NAIRA</h2>
-    <svg class="flowchart-svg">
+    <svg class="flowchart-svg" viewBox="0 0 740 320">
       <g class="anim-node"><rect class="node-rect danger" x="20" y="110" width="180" height="60"/><text x="30" y="135" font-weight="bold">14,447 Calc Mismatches</text><text x="30" y="152">Revenue != Sold x Price</text></g>
       <g class="anim-node"><rect class="node-rect" x="280" y="110" width="190" height="60"/><text x="290" y="135" font-weight="bold">Sabotage or Ignorance?</text><text x="290" y="152">Active ledger manipulation</text></g>
       <g class="anim-node"><rect class="node-rect success" x="540" y="110" width="180" height="60"/><text x="550" y="135" font-weight="bold">The Resolution</text><text x="550" y="152">Re-calculated clean revenue</text></g>

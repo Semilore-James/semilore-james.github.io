@@ -205,10 +205,60 @@ body {
   transform: none !important;
 }
 
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: 1px solid #00ff6644;
+  color: #00ff66;
+  font-family: 'Special Elite', system-ui;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  padding: 4px 14px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.back-btn:hover {
+  background: #00ff6622;
+  border-color: #00ff66;
+}
+
 /* ========== RESPONSIVE ========== */
 @media (max-width: 900px) {
-  .case-folder { width: 260px; }
-  .wall-title h1 { font-size: 1.6rem; }
+  body {
+    overflow-y: auto;
+  }
+  .corkboard {
+    height: auto;
+    min-height: 100vh;
+    padding-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .wall-title {
+    position: static;
+    transform: none;
+    margin-top: 80px;
+    margin-bottom: 20px;
+  }
+  .case-folder {
+    position: static !important;
+    transform: rotate(0deg) !important;
+    margin: 16px auto !important;
+    width: 90% !important;
+    max-width: 320px !important;
+  }
+  .folder-pin {
+    top: -6px;
+    right: 20px;
+  }
+  .nav-subtitle {
+    display: none;
+  }
+  .wall-title h1 { font-size: 1.8rem; }
 }
 </style>
 </head>
@@ -218,8 +268,11 @@ body {
   
   <!-- Status Bar -->
   <div class="top-bar">
-    <div>THE CASE FILES — SEMILORE JAMES</div>
-    <div style="font-size:0.7rem; color:#00ff6688;">DATA ANALYST // DETECTIVE</div>
+    <div style="display:flex; align-items:center; gap:16px;">
+      <a class="back-btn" href="../index.html">◄ PORTFOLIO</a>
+      <span style="font-size: 0.75rem;">THE CASE FILES</span>
+    </div>
+    <div style="font-size:0.7rem; color:#00ff6688;" class="nav-subtitle">DATA ANALYST // DETECTIVE</div>
   </div>
 
   <!-- Wall Title -->
