@@ -481,10 +481,15 @@ body {
     <!-- Case Dossier Brief (center top) -->
     <div class="case-brief" id="a1-brief" style="top: 50px; left: 50%; transform: translateX(-50%); width: 520px;">
       <div class="pushpin silver"></div>
-      <h2>THE DOSSIER: PALMRIDGE CONSUMER PRODUCTS</h2>
-      <p style="font-size:0.75rem; color:#555; margin-top:4px;">
-        <strong>Client:</strong> Palmridge Consumer Products Ltd. &nbsp;·&nbsp; <strong>Scope:</strong> 150,000-row Sales Ledger &nbsp;·&nbsp; <strong>Analyst:</strong> Semilore James
-      </p>
+      <div onclick="toggleDossier()" style="cursor:pointer;">
+        <h2 style="display:flex; justify-content:space-between; align-items:center;">
+          THE DOSSIER: PALMRIDGE CONSUMER PRODUCTS
+          <span id="dossier-arrow" style="font-size:0.7rem; color:#cc0000; letter-spacing:1px; margin-left:10px; flex-shrink:0;">READ MORE ▼</span>
+        </h2>
+        <p style="font-size:0.75rem; color:#555; margin-top:4px;">
+          <strong>Client:</strong> Palmridge Consumer Products Ltd. &nbsp;·&nbsp; <strong>Scope:</strong> 150,000-row Sales Ledger &nbsp;·&nbsp; <strong>Analyst:</strong> Semilore James
+        </p>
+      </div>
       <div class="dossier-expand" id="dossier-body">
         <p style="margin-top: 10px;">
           <strong>ACT I:</strong> 150,000 rows. 18 columns. Handed over after Mr. Tunde's sudden leave. Surface cleaning exposed mixed dates, 13 promo disguises, and missing unit prices.<br>
@@ -492,7 +497,6 @@ body {
           <strong>ACT III:</strong> Sales rep audits inconclusive. Suspicion shifted to <strong>Mrs. Folake Adebayo (Chief Accountant)</strong> — how did ₦337M pass through her ledgers?
         </p>
       </div>
-      <button class="read-more-btn" id="dossier-toggle" onclick="toggleDossier()">READ MORE ▼</button>
     </div>
 
     <!-- Lead 01: Date Obfuscation -->
@@ -911,11 +915,10 @@ body {
 <script>
 // ---- DOSSIER READ-MORE TOGGLE ----
 function toggleDossier() {
-  const body = document.getElementById('dossier-body');
-  const btn  = document.getElementById('dossier-toggle');
+  const body  = document.getElementById('dossier-body');
+  const arrow = document.getElementById('dossier-arrow');
   const isOpen = body.classList.toggle('open');
-  btn.textContent = isOpen ? 'READ LESS ▲' : 'READ MORE ▼';
-  // Nudge string redraw so they account for new brief height
+  arrow.textContent = isOpen ? 'READ LESS ▲' : 'READ MORE ▼';
   setTimeout(drawAllStrings, 450);
 }
 
