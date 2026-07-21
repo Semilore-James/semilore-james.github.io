@@ -403,33 +403,6 @@ body {
   opacity: 1; transform: translateY(0);
 }
 
-/* ========== DOSSIER READ-MORE ========== */
-.dossier-expand {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, opacity 0.3s ease;
-  opacity: 0;
-}
-.dossier-expand.open {
-  max-height: 300px;
-  opacity: 1;
-}
-.read-more-btn {
-  display: block;
-  margin-top: 8px;
-  background: none;
-  border: none;
-  font-family: 'Special Elite', system-ui;
-  font-size: 0.65rem;
-  color: #cc0000;
-  letter-spacing: 1px;
-  cursor: pointer;
-  padding: 0;
-  text-transform: uppercase;
-  transition: opacity 0.2s;
-}
-.read-more-btn:hover { opacity: 0.7; }
-
 /* ========== RESPONSIVE ========== */
 @media (max-width: 900px) {
   .act-zone {
@@ -479,24 +452,15 @@ body {
     <div class="act-divider">ACT I — THE AUDIT</div>
 
     <!-- Case Dossier Brief (center top) -->
-    <div class="case-brief" id="a1-brief" style="top: 50px; left: 50%; transform: translateX(-50%); width: 520px;">
+    <div class="case-brief" id="a1-brief" style="top: 50px; left: 50%; transform: translateX(-50%); width: 520px; cursor: pointer;" onclick="openModal('modal-dossier')">
       <div class="pushpin silver"></div>
-      <div onclick="toggleDossier()" style="cursor:pointer;">
-        <h2 style="display:flex; justify-content:space-between; align-items:center;">
-          THE DOSSIER: PALMRIDGE CONSUMER PRODUCTS
-          <span id="dossier-arrow" style="font-size:0.7rem; color:#cc0000; letter-spacing:1px; margin-left:10px; flex-shrink:0;">READ MORE ▼</span>
-        </h2>
-        <p style="font-size:0.75rem; color:#555; margin-top:4px;">
-          <strong>Client:</strong> Palmridge Consumer Products Ltd. &nbsp;·&nbsp; <strong>Scope:</strong> 150,000-row Sales Ledger &nbsp;·&nbsp; <strong>Analyst:</strong> Semilore James
-        </p>
-      </div>
-      <div class="dossier-expand" id="dossier-body">
-        <p style="margin-top: 10px;">
-          <strong>ACT I:</strong> 150,000 rows. 18 columns. Handed over after Mr. Tunde's sudden leave. Surface cleaning exposed mixed dates, 13 promo disguises, and missing unit prices.<br>
-          <strong>ACT II:</strong> Building the AM's Q2 pivots revealed deeper corruption — scrambled store codes, 14 region variants across 21 states, and <strong>₦337.9M in ghost revenue</strong>.<br>
-          <strong>ACT III:</strong> Sales rep audits inconclusive. Suspicion shifted to <strong>Mrs. Folake Adebayo (Chief Accountant)</strong> — how did ₦337M pass through her ledgers?
-        </p>
-      </div>
+      <h2 style="display:flex; justify-content:space-between; align-items:center;">
+        THE DOSSIER: PALMRIDGE CONSUMER PRODUCTS
+        <span style="font-size:0.65rem; color:#cc0000; letter-spacing:1px; margin-left:12px; flex-shrink:0;">READ MORE ▼</span>
+      </h2>
+      <p style="font-size:0.75rem; color:#555; margin-top:4px;">
+        <strong>Client:</strong> Palmridge Consumer Products Ltd. &nbsp;·&nbsp; <strong>Scope:</strong> 150,000-row Sales Ledger &nbsp;·&nbsp; <strong>Analyst:</strong> Semilore James
+      </p>
     </div>
 
     <!-- Lead 01: Date Obfuscation -->
@@ -680,6 +644,29 @@ body {
 <!-- ============================================================
      MODALS
      ============================================================ -->
+
+<!-- Modal 0: The Dossier -->
+<div class="modal-overlay" id="modal-dossier">
+  <div class="modal-container" style="width:700px;">
+    <button class="modal-close-btn" onclick="closeModal('modal-dossier')">X</button>
+    <h2 class="modal-title">THE DOSSIER // PALMRIDGE CONSUMER PRODUCTS</h2>
+    <div class="modal-text">
+      <p style="font-size:0.8rem; color:#888; margin-bottom:16px;">
+        <strong>Client:</strong> Palmridge Consumer Products Ltd. &nbsp;·&nbsp;
+        <strong>Scope:</strong> 150,000-row Sales Ledger &nbsp;·&nbsp;
+        <strong>Analyst:</strong> Semilore James &nbsp;·&nbsp;
+        <strong>Engagement:</strong> GridView Analytics, June 2026
+      </p>
+      <p><strong>ACT I — The Audit:</strong><br>
+      150,000 rows. 18 columns. Handed over after Mr. Tunde's sudden emergency medical leave — two weeks before the scheduled audit. Surface cleaning exposed mixed date formats, 13 promo flag variants, missing unit prices across 7,664 rows, and 19,045 blank revenue entries.</p>
+      <p style="margin-top:12px"><strong>ACT II — Structural Sabotage:</strong><br>
+      Building the Account Manager's 5 Q2 pivot questions revealed far deeper corruption. Store codes were mapped to 10+ different store names. Region labels were randomly paired across all 21 Nigerian states in 14 different variants. 12,543 duplicate transactions sat hidden in the data. And buried beneath it all — <strong>1,656 rows tagged INF carrying ₦337,974,601 in ghost revenue</strong> with no product identity attached.</p>
+      <p style="margin-top:12px"><strong>ACT III — The Verdict:</strong><br>
+      Initial suspicion fell on sales reps. Statistical analysis cleared them — the ghost revenue was distributed too evenly across all 40+ reps and 6 regions to be any individual's doing. Suspicion pivoted to <strong>Mrs. Folake Adebayo, Chief Accountant</strong>. How did ₦337M in unattached journal entries pass through monthly reconciliations bearing her signature without a single discrepancy ticket?</p>
+      <p style="margin-top:16px; font-style:italic; color:#888;">Investigation status: <strong style="color:#cc8800;">OPEN</strong> — further forensic analysis ongoing.</p>
+    </div>
+  </div>
+</div>
 
 <!-- Modal 1: Date Obfuscation -->
 <div class="modal-overlay" id="modal-dates">
@@ -913,15 +900,6 @@ body {
 </div>
 
 <script>
-// ---- DOSSIER READ-MORE TOGGLE ----
-function toggleDossier() {
-  const body  = document.getElementById('dossier-body');
-  const arrow = document.getElementById('dossier-arrow');
-  const isOpen = body.classList.toggle('open');
-  arrow.textContent = isOpen ? 'READ LESS ▲' : 'READ MORE ▼';
-  setTimeout(drawAllStrings, 450);
-}
-
 // ---- MODAL SYSTEM ----
 function openModal(id) {
   const modal = document.getElementById(id);
