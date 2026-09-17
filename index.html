@@ -4,8 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Atolagbe Semilore James — Product Manager</title>
+<meta name="description" content="Semilore Atolagbe is a Product Manager in Abuja who ships products and builds the tools to ship them faster. Founder of Moonframe.">
+<link rel="canonical" href="https://semilore-james.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://semilore-james.github.io/">
+<meta property="og:title" content="Atolagbe Semilore James — Product Manager">
+<meta property="og:description" content="I ship products. Then I build tools to ship them faster. Founder of Moonframe.">
+<meta property="og:image" content="https://semilore-james.github.io/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@the_semilore">
+<meta name="twitter:creator" content="@the_semilore">
+<link rel="icon" type="image/png" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
 
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -44,11 +60,13 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 .btn-outline:hover{box-shadow:6px 6px 0 #000;transform:translate(-2px,-2px)}
 
 /* ABOUT */
-#about{padding:96px 80px;border-top:4px solid #000;background:#fff}
+#about{padding:96px 80px;border-top:4px solid #000;background:#fff;overflow:hidden}
 .section-heading{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:48px;letter-spacing:-0.02em;color:#000;margin-bottom:64px}
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1152px;margin:0 auto}
 .about-img-box{border:4px solid #000;background:rgba(249,115,22,0.05);box-shadow:8px 8px 0 #000;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;opacity:0;transform:translateX(-30px)}
 .about-img-box.visible{animation:slideInLeft 0.6s ease forwards}
+.about-img-box.has-photo{background:#1f2937;aspect-ratio:3/4;max-width:460px;justify-self:center;width:100%}
+.about-img-box.has-photo img{width:100%;height:100%;object-fit:cover;object-position:center 20%;display:block}
 .about-watermark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:96px;color:rgba(0,0,0,0.06);user-select:none;line-height:1;text-align:center}
 .about-watermark span{display:block;font-size:56px;color:#F97316;opacity:0.15}
 .deco-sq{position:absolute;top:-24px;right:-24px;width:72px;height:72px;background:#F97316;border:4px solid #000;transform:rotate(12deg);z-index:1}
@@ -64,6 +82,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 /* WORK */
 #work{padding:96px 80px;border-top:4px solid #000;background:#fff}
 .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:1152px;margin:0 auto}
+.projects-grid>*,.lab-grid>*{min-width:0}
 .project-card{border:4px solid #000;background:#fff;box-shadow:6px 6px 0 #000;cursor:pointer;transition:box-shadow 0.2s,transform 0.2s;opacity:0;transform:translateY(30px);text-decoration:none;color:#000;display:block}
 .project-card.visible{animation:fadeUp 0.6s ease forwards}
 .project-card:hover{box-shadow:10px 10px 0 #000;transform:translate(-4px,-4px)}
@@ -102,8 +121,10 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 #skills{padding:96px 80px;border-top:4px solid #000;background:#fff;overflow:hidden}
 .skills-sub{font-family:'Space Mono',monospace;font-size:13px;color:#666;margin-bottom:48px;margin-top:12px}
 .skills-cloud{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;max-width:1152px;margin:0 auto}
-.skill-tag{display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;padding:10px 18px;border:3px solid #000;border-radius:2px;box-shadow:3px 3px 0 #000;cursor:default;transition:transform 0.3s;opacity:0;transform:scale(0.8)}
+.skill-tag{--r:0deg;display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;padding:10px 18px;border:3px solid #000;border-radius:2px;box-shadow:3px 3px 0 #000;cursor:default;transition:transform 0.3s;opacity:0;transform:scale(0.8) rotate(var(--r))}
 .skill-tag.visible{animation:scaleIn 0.4s ease forwards}
+.skill-tag.done{animation:none;opacity:1;transform:rotate(var(--r))}
+.skill-tag.done:hover{transform:scale(1.06) rotate(0deg)}
 .sk-orange{background:#F97316;color:#fff}
 .sk-outline{background:#fff;color:#000}
 
@@ -121,6 +142,8 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 .social-links.visible{animation:fadeUp 0.6s ease 0.4s forwards}
 .social-link{font-family:'Space Mono',monospace;font-size:14px;text-transform:uppercase;letter-spacing:0.1em;color:#fff;text-decoration:none;border-bottom:2px solid transparent;padding-bottom:2px;transition:color 0.2s,border-color 0.2s}
 .social-link:hover{color:#F97316;border-bottom-color:#F97316}
+.contact-alt{font-family:'Space Mono',monospace;font-size:13px;color:rgba(255,255,255,0.6);margin:-24px 0 40px}
+.contact-alt a{color:#F97316;text-decoration:none;border-bottom:2px solid #F97316}
 .copyright{font-family:'Space Mono',monospace;font-size:11px;color:rgba(255,255,255,0.3);margin-top:48px;opacity:0;letter-spacing:0.1em}
 .copyright.visible{animation:fadeUp 0.6s ease 0.5s forwards}
 
@@ -128,7 +151,34 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 @keyframes slideInLeft{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
 @keyframes slideInRight{from{opacity:0;transform:translateX(30px)}to{opacity:1;transform:translateX(0)}}
-@keyframes scaleIn{from{opacity:0;transform:scale(0.8)}to{opacity:1;transform:scale(1)}}
+@keyframes scaleIn{from{opacity:0;transform:scale(0.8) rotate(var(--r,0deg))}to{opacity:1;transform:scale(1) rotate(var(--r,0deg))}}
+
+/* BUILDING NOW */
+#building{padding:96px 80px;border-top:4px solid #000;background:#FFF7ED}
+.lab-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;max-width:1152px;margin:0 auto}
+.lab-card{border:4px solid #000;background:#fff;box-shadow:6px 6px 0 #000;text-decoration:none;color:#000;display:flex;flex-direction:column;transition:box-shadow 0.2s,transform 0.2s;opacity:0;transform:translateY(30px)}
+.lab-card.visible{animation:fadeUp 0.6s ease forwards}
+.lab-card:hover{box-shadow:10px 10px 0 #000;transform:translate(-4px,-4px)}
+.lab-preview{height:220px;border-bottom:4px solid #000;overflow:hidden;position:relative;padding:20px 24px;font-family:'Space Mono',monospace;font-size:13px;line-height:22px;white-space:nowrap}
+.lab-preview.jot{background:#FBF6EA;background-image:repeating-linear-gradient(transparent 0 21px,#E7DCC3 21px 22px);color:#3b2f22}
+.lab-preview.jot .kw{color:#B4532A;font-weight:700}
+.lab-preview.jot .note{color:#8a7a66;font-style:italic}
+.lab-preview.los{background:#0B1020;color:#E5E7EB;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.los-window{border:3px solid #F97316;background:#111827;box-shadow:5px 5px 0 #F97316;padding:14px 16px}
+.los-title{font-weight:700;color:#fff;font-size:15px;letter-spacing:0.08em}
+.los-apps{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.los-apps span{border:2px solid #E5E7EB;padding:2px 8px;font-size:11px;text-transform:uppercase;letter-spacing:0.08em}
+.lab-card .card-content{flex:1;display:flex;flex-direction:column}
+.lab-card .card-desc{flex:1}
+.lab-status{position:absolute;bottom:12px;right:12px;background:#000;color:#fff;border:2px solid #000;font-family:'Space Mono',monospace;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:4px 8px;box-shadow:2px 2px 0 #F97316}
+.also-list{max-width:1152px;margin:40px auto 0;font-family:'Space Mono',monospace;font-size:13px;line-height:1.8;color:#333}
+.also-list strong{color:#000}
+
+/* NO-JS + REDUCED MOTION: never leave content invisible */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .hero-label,.hero-identity,.hero-name,.hero-role,.hero-btns,.about-img-box,.about-text,.project-card,.lab-card,.case-row,.skill-tag,.contact-heading,.contact-sub,.btn-contact,.social-links,.copyright{opacity:1 !important;animation:none !important;transform:rotate(var(--r,0deg)) !important}
+}
 
 /* CASES NAV ACCENT */
 .nav-cases-link{color:#F97316 !important;font-weight:700;border:2px solid #F97316;padding:4px 12px;transition:background 0.2s,color 0.2s}
@@ -137,7 +187,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 /* TABLET */
 @media(max-width:1024px){
   nav{padding:0 40px}
-  #hero,#about,#work,#case-studies,#skills,#contact{padding:72px 40px}
+  #hero,#about,#work,#building,#case-studies,#skills,#contact{padding:72px 40px}
   .projects-grid{grid-template-columns:repeat(2,1fr);gap:28px}
   .section-heading{font-size:40px}
   .about-grid{gap:32px}
@@ -152,7 +202,8 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   .nav-cases-link{border:none;padding:18px 24px;display:block;text-align:left}
   .hamburger{display:flex}
   .logo-wordmark{font-size:16px}
-  #hero,#about,#work,#case-studies,#skills,#contact{padding:64px 24px}
+  #hero,#about,#work,#building,#case-studies,#skills,#contact{padding:64px 24px}
+  .lab-grid{grid-template-columns:1fr}
   .about-grid{grid-template-columns:1fr}
   .projects-grid{grid-template-columns:1fr}
   .section-heading{font-size:36px;margin-bottom:40px}
@@ -163,6 +214,9 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   .skill-tag{font-size:11px;padding:8px 12px}
 }
 </style>
+<noscript><style>
+.hero-label,.hero-identity,.hero-name,.hero-role,.hero-btns,.about-img-box,.about-text,.project-card,.lab-card,.case-row,.skill-tag,.contact-heading,.contact-sub,.btn-contact,.social-links,.copyright{opacity:1 !important;animation:none !important;transform:none !important}
+</style></noscript>
 </head>
 <body>
 
@@ -175,12 +229,13 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
     </div>
     <span class="logo-wordmark">Semilore</span>
   </a>
-  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu">
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Menu" aria-expanded="false" aria-controls="navLinks">
     <span></span><span></span><span></span>
   </button>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#work">Work</a></li>
+    <li><a href="#building">Building</a></li>
     <li><a href="#case-studies">Writing</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
@@ -202,7 +257,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   <p class="hero-role">I ship products. Then I build tools to ship them faster.</p>
   <div class="hero-btns">
     <a href="#work" class="btn btn-orange">See My Work</a>
-    <a href="mailto:semiares@gmail.com" class="btn btn-outline">Get In Touch</a>
+    <a href="mailto:jimmyatolagbe@gmail.com" class="btn btn-outline">Get In Touch</a>
   </div>
 </section>
 
@@ -211,14 +266,15 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   <div style="max-width:1152px;margin:0 auto">
     <h2 class="section-heading">Who I Am</h2>
     <div class="about-grid">
-      <div class="about-img-box" id="about-img">
+      <div class="about-img-box has-photo" id="about-img">
         <div class="deco-sq"></div>
         <div class="deco-sq2"></div>
-        <div class="about-watermark">PM<span>+ Builder</span></div>
+        <img src="semilore-headshot.jpg" alt="Portrait of Atolagbe Semilore James" width="720" height="960">
       </div>
       <div class="about-text" id="about-text">
         <p>I'm a Product Manager who builds things. Not metaphorically — I ship internal tools, automations, and apps using AI, and I can read HTML, CSS, JavaScript, React, and React Native well enough to have real conversations with engineers, file meaningful bug reports, and understand tradeoffs before they become problems.</p>
         <p>My background spans fintech, Web3 gaming, and e-commerce. I write specs engineers can build from without a back-and-forth. I own roadmaps, talk to users, and stay close enough to the product to notice what's actually broken versus what's just loud.</p>
+        <p>Right now I'm a Product Manager at Ortho Technologies and a Project Manager at Floorkraft, and I'm the founder of <a href="work/moonframe.html" style="color:#000;border-bottom:2px solid #F97316;text-decoration:none">Moonframe</a>, which grew out of the problems I kept seeing at both.</p>
         <p>I think in systems. I build when I see gaps.</p>
         <div class="about-tags">
           <span class="tag tag-orange">Fintech</span>
@@ -245,16 +301,16 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
           <div class="dot dot-orange"></div>
           <div class="dot dot-black"></div>
           <div class="dot" style="background:#E5E7EB"></div>
-          <div class="url-bar">moonframe.app · operations, simplified</div>
+          <div class="url-bar">moonframe.live · one record in, everything else out</div>
         </div>
         <div class="preview-area">
-          <img src="moonframe-finances.png" alt="Moonframe Finances Dashboard" loading="lazy">
-          <span class="preview-badge">MVP · Live</span>
+          <img src="moonframe-live.jpg" alt="Moonframe landing page" loading="lazy">
+          <span class="preview-badge">Live · Paid Plans</span>
         </div>
         <div class="card-content">
-          <span class="card-tag">Business Tool · Full Stack</span>
+          <span class="card-tag">Founder · SaaS · Full Stack</span>
           <div class="card-title">Moonframe</div>
-          <div class="card-desc">A business operations platform built for small businesses that collapse under their own disorganisation. Revenue, inventory, expenses, tasks — in one place. Built on Supabase.</div>
+          <div class="card-desc">An inventory-first operations platform for small businesses. Enter stock once and invoices, P&amp;L and daily reports write themselves. Live with paid plans, and running at Floorkraft Abuja.</div>
           <span class="card-link">View Case Study →</span>
         </div>
       </a>
@@ -265,7 +321,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
           <div class="dot dot-orange"></div>
           <div class="dot dot-black"></div>
           <div class="dot" style="background:#E5E7EB"></div>
-          <div class="url-bar">curious-dashboard.onrender.com</div>
+          <div class="url-bar">internal tool · ortho technologies</div>
         </div>
         <div class="preview-area">
           <img src="analytics-1.png" alt="Creamabell Analytics Dashboard" loading="lazy">
@@ -303,6 +359,66 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   </div>
 </section>
 
+<!-- BUILDING NOW -->
+<section id="building">
+  <div style="max-width:1152px;margin:0 auto">
+    <h2 class="section-heading">Building Now</h2>
+    <p style="font-family:'Space Mono',monospace;font-size:13px;color:#666;margin-bottom:48px;margin-top:-40px">Open-source side projects, built in public.</p>
+    <div class="lab-grid">
+
+      <!-- Jotstak -->
+      <a href="https://github.com/Semilore-James/jotstak" target="_blank" rel="noopener" class="lab-card" id="lab-0">
+        <div class="browser-bar">
+          <div class="dot dot-orange"></div>
+          <div class="dot dot-black"></div>
+          <div class="dot" style="background:#E5E7EB"></div>
+          <div class="url-bar">prd.jot</div>
+        </div>
+        <div class="lab-preview jot" aria-hidden="true">
+          <span class="lab-status">In Build · MIT</span>
+          <span class="kw">@banner</span> Product Requirements<br>
+          <span class="kw">@heading</span> Overview<br>
+          Problem, who it is for, and why now.<br>
+          <span class="note">&gt;&gt; keep this to a paragraph</span><br>
+          <span class="kw">@decision</span> title="The core bet"<br>
+          &nbsp;&nbsp;choice: the approach we are committing to
+        </div>
+        <div class="card-content">
+          <span class="card-tag">Dev Tool · VS Code Extension</span>
+          <div class="card-title">Jotstak</div>
+          <div class="card-desc">A code-first document tool for product managers. Write specs, decisions and retros in a small language (.jot) and render them as a warm, hand-kept notebook, or as a clean A4 doc for stakeholders. Plain text, Git-versioned, no lock-in.</div>
+          <span class="card-link">View on GitHub ↗</span>
+        </div>
+      </a>
+
+      <!-- Learning OS -->
+      <a href="https://github.com/Semilore-James/learning_OS" target="_blank" rel="noopener" class="lab-card" id="lab-1">
+        <div class="browser-bar">
+          <div class="dot dot-orange"></div>
+          <div class="dot dot-black"></div>
+          <div class="dot" style="background:#E5E7EB"></div>
+          <div class="url-bar">da // learning os</div>
+        </div>
+        <div class="lab-preview los" aria-hidden="true">
+          <span class="lab-status">v1 · Next.js</span>
+          <div class="los-window">
+            <div class="los-title">DA // LEARNING OS</div>
+            <div class="los-apps"><span>Curriculum</span><span>Textbooks</span><span>Case Files</span><span>Games</span><span>Shop</span></div>
+          </div>
+        </div>
+        <div class="card-content">
+          <span class="card-tag">EdTech · Next.js · Supabase</span>
+          <div class="card-title">DA // Learning OS</div>
+          <div class="card-desc">A data-analyst learning environment designed as a desktop operating system. Curriculum, textbooks, case investigations and games open as windows, with XP and a coin shop to keep the habit going. Built alongside my own analytics training.</div>
+          <span class="card-link">View on GitHub ↗</span>
+        </div>
+      </a>
+
+    </div>
+    <p class="also-list">Also: <strong><a href="cases/index.html" style="color:#000;border-bottom:2px solid #F97316;text-decoration:none">The Case Files</a></strong>, simulated data-analyst investigations where every finding is a clue.</p>
+  </div>
+</section>
+
 <!-- CASE STUDIES / WRITING -->
 <section id="case-studies">
   <div style="max-width:1152px;margin:0 auto">
@@ -334,26 +450,26 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
     <h2 class="section-heading" style="margin-bottom:12px">Skills & Tools</h2>
     <p class="skills-sub">What I actually know vs what I just listed on LinkedIn</p>
     <div class="skills-cloud">
-      <span class="skill-tag sk-orange" id="sk-0" style="transform:rotate(-2deg)">Product Strategy</span>
-      <span class="skill-tag sk-outline" id="sk-1" style="transform:rotate(2deg)">PRD Writing</span>
-      <span class="skill-tag sk-orange" id="sk-2" style="transform:rotate(-1deg)">Roadmapping</span>
-      <span class="skill-tag sk-outline" id="sk-3" style="transform:rotate(3deg)">User Research</span>
-      <span class="skill-tag sk-orange" id="sk-4" style="transform:rotate(-2deg)">A/B Testing</span>
-      <span class="skill-tag sk-outline" id="sk-5" style="transform:rotate(1deg)">RICE / MoSCoW</span>
-      <span class="skill-tag sk-orange" id="sk-6" style="transform:rotate(-3deg)">Sprint Planning</span>
-      <span class="skill-tag sk-outline" id="sk-7" style="transform:rotate(2deg)">HTML · CSS · JS</span>
-      <span class="skill-tag sk-orange" id="sk-8" style="transform:rotate(-1deg)">React Native</span>
-      <span class="skill-tag sk-outline" id="sk-9" style="transform:rotate(2deg)">Supabase</span>
-      <span class="skill-tag sk-orange" id="sk-10" style="transform:rotate(-2deg)">Make.com</span>
-      <span class="skill-tag sk-outline" id="sk-11" style="transform:rotate(1deg)">Zapier</span>
-      <span class="skill-tag sk-orange" id="sk-12" style="transform:rotate(-1deg)">ClickUp</span>
-      <span class="skill-tag sk-outline" id="sk-13" style="transform:rotate(3deg)">Notion</span>
-      <span class="skill-tag sk-orange" id="sk-14" style="transform:rotate(-2deg)">Power BI</span>
-      <span class="skill-tag sk-outline" id="sk-15" style="transform:rotate(1deg)">Advanced Excel</span>
-      <span class="skill-tag sk-orange" id="sk-16" style="transform:rotate(-1deg)">Go-to-Market</span>
-      <span class="skill-tag sk-outline" id="sk-17" style="transform:rotate(2deg)">Stakeholder Mgmt</span>
-      <span class="skill-tag sk-orange" id="sk-18" style="transform:rotate(-3deg)">Claude · AI Tooling</span>
-      <span class="skill-tag sk-outline" id="sk-19" style="transform:rotate(1deg)">Agile / Scrum</span>
+      <span class="skill-tag sk-orange" id="sk-0" style="--r:-2deg">Product Strategy</span>
+      <span class="skill-tag sk-outline" id="sk-1" style="--r:2deg">PRD Writing</span>
+      <span class="skill-tag sk-orange" id="sk-2" style="--r:-1deg">Roadmapping</span>
+      <span class="skill-tag sk-outline" id="sk-3" style="--r:3deg">User Research</span>
+      <span class="skill-tag sk-orange" id="sk-4" style="--r:-2deg">A/B Testing</span>
+      <span class="skill-tag sk-outline" id="sk-5" style="--r:1deg">RICE / MoSCoW</span>
+      <span class="skill-tag sk-orange" id="sk-6" style="--r:-3deg">Sprint Planning</span>
+      <span class="skill-tag sk-outline" id="sk-7" style="--r:2deg">HTML · CSS · JS</span>
+      <span class="skill-tag sk-orange" id="sk-8" style="--r:-1deg">React Native</span>
+      <span class="skill-tag sk-outline" id="sk-9" style="--r:2deg">Supabase</span>
+      <span class="skill-tag sk-orange" id="sk-10" style="--r:-2deg">Make.com</span>
+      <span class="skill-tag sk-outline" id="sk-11" style="--r:1deg">Zapier</span>
+      <span class="skill-tag sk-orange" id="sk-12" style="--r:-1deg">ClickUp</span>
+      <span class="skill-tag sk-outline" id="sk-13" style="--r:3deg">Notion</span>
+      <span class="skill-tag sk-orange" id="sk-14" style="--r:-2deg">Power BI</span>
+      <span class="skill-tag sk-outline" id="sk-15" style="--r:1deg">Advanced Excel</span>
+      <span class="skill-tag sk-orange" id="sk-16" style="--r:-1deg">Go-to-Market</span>
+      <span class="skill-tag sk-outline" id="sk-17" style="--r:2deg">Stakeholder Mgmt</span>
+      <span class="skill-tag sk-orange" id="sk-18" style="--r:-3deg">Claude · AI Tooling</span>
+      <span class="skill-tag sk-outline" id="sk-19" style="--r:1deg">Agile / Scrum</span>
     </div>
   </div>
 </section>
@@ -363,10 +479,12 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   <div class="contact-inner">
     <h2 class="contact-heading" id="c-head">LET'S BUILD<br>SOMETHING.</h2>
     <p class="contact-sub" id="c-sub">Product roles, consulting, or interesting problems — I'm listening.</p>
-    <a href="mailto:semiares@gmail.com" class="btn-contact" id="c-btn">Email Me</a>
+    <a href="mailto:jimmyatolagbe@gmail.com" class="btn-contact" id="c-btn">Email Me</a>
+    <p class="contact-alt">or <a href="https://x.com/messages/compose?recipient_id=1831135559634309122" target="_blank" rel="noopener">send me a DM on X</a></p>
     <div class="social-links" id="c-social">
-      <a href="https://linkedin.com/in/semilore-atolagbe" class="social-link" target="_blank">LinkedIn</a>
-      <a href="https://github.com/Semilore-James" class="social-link" target="_blank">GitHub</a>
+      <a href="https://www.linkedin.com/in/semilore-atolagbe" class="social-link" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://x.com/the_semilore" class="social-link" target="_blank" rel="noopener">X</a>
+      <a href="https://github.com/Semilore-James" class="social-link" target="_blank" rel="noopener">GitHub</a>
     </div>
     <div class="copyright" id="c-copy">© 2026 ATOLAGBE SEMILORE JAMES · ABUJA, NIGERIA</div>
   </div>
@@ -374,13 +492,15 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 
 <script>
 function toggleMenu(){
-  document.getElementById('navLinks').classList.toggle('open');
+  const open=document.getElementById('navLinks').classList.toggle('open');
+  document.querySelector('.hamburger').setAttribute('aria-expanded',open);
 }
 
 // Close mobile menu when nav links are clicked
 document.querySelectorAll('.nav-links a').forEach(link => {
   link.addEventListener('click', () => {
     document.getElementById('navLinks').classList.remove('open');
+    document.querySelector('.hamburger').setAttribute('aria-expanded','false');
   });
 });
 
@@ -392,6 +512,7 @@ const io = new IntersectionObserver((entries)=>{
 
 ['about-img','about-text'].forEach(id=>{const el=document.getElementById(id);if(el)io.observe(el)});
 [0,1,2].forEach(i=>{const c=document.getElementById('card-'+i);if(c){c.style.animationDelay=(i*0.15)+'s';io.observe(c)}});
+[0,1].forEach(i=>{const c=document.getElementById('lab-'+i);if(c){c.style.animationDelay=(i*0.15)+'s';io.observe(c)}});
 [0,1,2].forEach(i=>{const r=document.getElementById('cr-'+i);if(r){r.style.animationDelay=(i*0.1)+'s';io.observe(r)}});
 for(let i=0;i<20;i++){const s=document.getElementById('sk-'+i);if(s){s.style.animationDelay=(i*0.04)+'s';io.observe(s)}}
 ['c-head','c-sub','c-btn','c-social','c-copy'].forEach((id,i)=>{
@@ -400,9 +521,7 @@ for(let i=0;i<20;i++){const s=document.getElementById('sk-'+i);if(s){s.style.ani
 });
 
 document.querySelectorAll('.skill-tag').forEach(tag=>{
-  const orig=tag.style.transform;
-  tag.addEventListener('mouseenter',()=>{tag.style.transform='scale(1.06)';tag.style.zIndex=10});
-  tag.addEventListener('mouseleave',()=>{tag.style.transform=orig;tag.style.zIndex=1});
+  tag.addEventListener('animationend',()=>tag.classList.add('done'),{once:true});
 });
 </script>
 </body>

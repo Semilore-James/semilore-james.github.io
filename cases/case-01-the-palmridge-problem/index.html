@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CASE NO. 001 // THE PALMRIDGE PROBLEM</title>
+<link rel="icon" type="image/png" href="../../favicon-32.png">
+<link rel="apple-touch-icon" href="../../apple-touch-icon.png">
 <meta name="description" content="Case No. 001: The Palmridge Problem. A sales ledger audit of 150,000 records. Part of the Case Files series by Semilore James.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -427,6 +429,16 @@ body {
     top: 16px; left: 16px; right: 16px;
   }
 }
+.sim-tag {
+  display: inline-block;
+  margin-left: 10px;
+  padding: 1px 8px;
+  border: 1px solid #cc8800;
+  color: #cc8800;
+  font-size: 0.65rem;
+  letter-spacing: 1px;
+  vertical-align: middle;
+}
 </style>
 </head>
 <body>
@@ -439,7 +451,7 @@ body {
   <div class="top-bar">
     <div style="display:flex; align-items:center; gap:16px;">
       <a class="back-btn" href="../index.html">◄ WALL</a>
-      <span>CASE FILE NO. 001 // THE PALMRIDGE PROBLEM</span>
+      <span>CASE FILE NO. 001 // THE PALMRIDGE PROBLEM <span class="sim-tag" title="Companies, people and datasets in this case are fictional. The analysis is my own work.">SIMULATED CASE</span></span>
     </div>
     <div>STATUS: <span class="status-badge badge-open">OPEN</span></div>
   </div>
@@ -528,7 +540,7 @@ body {
         <span style="font-size: 5px;">Lekki Phase I, Lagos</span>
       </div>
       <div class="letter-body">
-        <strong>OFFER OF ENGAGEMENT</strong><br>
+        <strong>OFFER OF ENGAGEMENT</strong> <span style="color:#cc0000">(SIMULATION)</span><br>
         Candidate: Semilore James<br>
         Role: Junior BI Analyst<br>
         Commencement: June 2026<br><br>
@@ -651,11 +663,12 @@ body {
     <button class="modal-close-btn" onclick="closeModal('modal-dossier')">X</button>
     <h2 class="modal-title">THE DOSSIER // PALMRIDGE CONSUMER PRODUCTS</h2>
     <div class="modal-text">
+      <p style="font-size:0.75rem; color:#aa6600; margin-bottom:10px; letter-spacing:1px;">SIMULATED CASE · Palmridge, GridView and everyone named here are fictional. The dataset was generated for this exercise; the cleaning, pivots and findings are my own work.</p>
       <p style="font-size:0.8rem; color:#888; margin-bottom:16px;">
         <strong>Client:</strong> Palmridge Consumer Products Ltd. &nbsp;·&nbsp;
         <strong>Scope:</strong> 150,000-row Sales Ledger &nbsp;·&nbsp;
         <strong>Analyst:</strong> Semilore James &nbsp;·&nbsp;
-        <strong>Engagement:</strong> GridView Analytics, June 2026
+        <strong>Engagement:</strong> GridView Analytics (simulated), June 2026
       </p>
       <p><strong>ACT I — The Audit:</strong><br>
       150,000 rows. 18 columns. Handed over after Mr. Tunde's sudden emergency medical leave — two weeks before the scheduled audit. Surface cleaning exposed mixed date formats, 13 promo flag variants, missing unit prices across 7,664 rows, and 19,045 blank revenue entries.</p>

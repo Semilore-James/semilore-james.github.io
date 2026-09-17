@@ -4,8 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Moonframe — Atolagbe Semilore James</title>
+<meta name="description" content="Moonframe: a live inventory-first operations platform for small businesses. Designed, built and shipped solo by Semilore Atolagbe.">
+<meta property="og:title" content="Moonframe — Case Study">
+<meta property="og:description" content="One record in, everything else out. A live operations platform for small businesses, built solo.">
+<meta property="og:image" content="https://semilore-james.github.io/moonframe-live.jpg">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" href="../favicon-32.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap');
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Space Grotesk',sans-serif;background:#fff;color:#000;overflow-x:hidden}
@@ -69,6 +79,9 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 
 /* STATUS BANNER */
 .status-banner{border:4px solid #000;background:#000;padding:32px;margin:48px 0;box-shadow:6px 6px 0 #F97316;display:flex;align-items:center;gap:24px}
+.status-text a{color:#F97316}
+.stat-row.four{grid-template-columns:repeat(4,1fr)}
+.stat-row.four .stat-num{font-size:40px}
 .status-dot{width:14px;height:14px;border-radius:50%;background:#F97316;flex-shrink:0;animation:pulse 2s ease infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
 .status-text{font-family:'Space Mono',monospace;font-size:14px;color:#fff;letter-spacing:0.05em;line-height:1.6}
@@ -87,6 +100,10 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   .stat-item{border-right:none;border-bottom:4px solid #000}
   .stat-item:last-child{border-bottom:none}
   .screenshot-grid{grid-template-columns:1fr}
+  .stat-row.four{grid-template-columns:1fr 1fr}
+  .stat-row.four .stat-item{border-bottom:4px solid #000}
+  .stat-row.four .stat-item:nth-child(odd){border-right:4px solid #000}
+  .stat-row.four .stat-item:nth-child(n+3){border-bottom:none}
 }
 </style>
 </head>
@@ -110,10 +127,10 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
     <div class="case-eyebrow">Case Study · Product Build</div>
     <h1 class="case-title">Moon<span>frame</span></h1>
     <div class="case-meta">
-      <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Solo Builder / PM</span></div>
-      <div class="meta-item"><span class="meta-label">Stack</span><span class="meta-value">Supabase · React</span></div>
-      <div class="meta-item"><span class="meta-label">Status</span><span class="meta-value">MVP · In Progress</span></div>
-      <div class="meta-item"><span class="meta-label">Stage</span><span class="meta-value">Active Development</span></div>
+      <div class="meta-item"><span class="meta-label">Role</span><span class="meta-value">Founder · Solo PM &amp; Builder</span></div>
+      <div class="meta-item"><span class="meta-label">Stack</span><span class="meta-value">React · TypeScript · Supabase</span></div>
+      <div class="meta-item"><span class="meta-label">Status</span><span class="meta-value">Live · Paid Plans</span></div>
+      <div class="meta-item"><span class="meta-label">Site</span><span class="meta-value"><a href="https://moonframe.live" target="_blank" rel="noopener" style="color:#F97316">moonframe.live ↗</a></span></div>
     </div>
   </div>
 </div>
@@ -122,90 +139,98 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 <div class="case-body">
 
   <h2>The Problem I Was Watching</h2>
-  <p>Small businesses in Nigeria don't fail because they have bad products. They fail because they have no operational memory. Revenue goes into a notebook. Inventory lives in someone's head. Tasks are WhatsApp messages that disappear. The business runs on the founder's memory, and when the founder is overwhelmed — which is always — things fall through.</p>
-  <p>I watched this happen repeatedly. The tools that exist either cost too much, assume too much technical knowledge, or solve one problem while ignoring five others. So I built Moonframe.</p>
+  <p>Small businesses in Nigeria don't fail because they have bad products. They fail because they have no operational memory. Stock counts live in a spreadsheet called <em>Master_Stock_final_v3_copy</em>. Sales get re-typed into a POS, shipments into a delivery sheet, and someone reconciles all of it at 9pm. Every copy disagrees with the others.</p>
+  <p>I saw this up close at Floorkraft, a flooring company I work with, where a warehouse count I led turned up discrepancies of over 1,000 cartons. Nobody had done anything wrong. The business just had five records of the same stock, and none of them was true.</p>
 
   <div class="pull-quote">
-    <p>"The infrastructure beneath all of that — the servers, the deployment pipeline, the networking — was a layer I had never looked at directly. They just seemed to be."</p>
+    <p>"Enter your stock once, in bulk. Everything downstream writes itself from that single record."</p>
   </div>
 
   <h2>What It Does</h2>
-  <p>Moonframe is an all-in-one business operations platform. Revenue tracking, inventory management, invoicing, task management, and business intelligence reports — in a single dashboard. It runs on Supabase, which gave me authentication, a real-time database, and file storage without building a backend from scratch.</p>
+  <p>Moonframe is built on one rule: <strong>you input once</strong>. Stock goes in once, in bulk, and again whenever you restock. Invoices, stock movements, the customer ledger, profit &amp; loss and daily reports are all generated from that record, so nothing is entered twice and the numbers never disagree.</p>
+  <p>It's split into six modules, each shaped around the person who actually uses it:</p>
 
   <div class="tag-row">
-    <span class="tag tag-orange">Revenue Tracking</span>
-    <span class="tag tag-outline">Inventory</span>
-    <span class="tag tag-orange">Invoicing</span>
-    <span class="tag tag-outline">Task Board</span>
-    <span class="tag tag-orange">Daily Reports</span>
-    <span class="tag tag-outline">Business Intelligence</span>
-    <span class="tag tag-orange">Multi-location</span>
+    <span class="tag tag-orange">Dashboard · the owner</span>
+    <span class="tag tag-outline">Operations · dispatch</span>
+    <span class="tag tag-orange">Inventory · the stockkeeper</span>
+    <span class="tag tag-outline">Finances · the reconciler</span>
+    <span class="tag tag-orange">Reports · the analyst</span>
+    <span class="tag tag-outline">Invoices · accounts receivable</span>
   </div>
 
+  <p>The details come from how Nigerian businesses actually trade. Invoices go out as PDFs on WhatsApp. Inventory converts between packs and units, so the count holds whether you sell a full sack of flour or a single cup. There's no accounting vocabulary anywhere: no debits, credits or journals. And every edit, price override and refund records who did it and when.</p>
+
   <div class="gallery">
-    <div class="gallery-label">The Product — Live Screens</div>
+    <div class="gallery-label">The Product · moonframe.live today</div>
     <div class="screenshot">
-      <img src="../moonframe-splash.png" alt="Moonframe splash screen">
-      <div class="screenshot-caption">SPLASH SCREEN · Operations, Simplified.</div>
+      <img src="../moonframe-live.jpg" alt="Moonframe landing page: One For All. Your inventory tells the story." loading="lazy">
+      <div class="screenshot-caption">LANDING · One record in. Everything else out.</div>
     </div>
 
-    <div class="screenshot">
-      <img src="../moonframe-finances.png" alt="Moonframe Finances Dashboard">
-      <div class="screenshot-caption">FINANCES · Total income, expenses, net profit, profit margin — real time.</div>
-    </div>
-
+    <div class="gallery-label" style="margin-top:48px">Early MVP screens · the interface has since been redesigned</div>
     <div class="screenshot-grid">
       <div class="screenshot">
-        <img src="../moonframe-invoices.png" alt="Moonframe Invoices">
-        <div class="screenshot-caption">RECEIPTS & INVOICES</div>
+        <img src="../moonframe-finances.png" alt="Early Moonframe finances dashboard" loading="lazy">
+        <div class="screenshot-caption">FINANCES · Income, expenses, profit</div>
       </div>
       <div class="screenshot">
-        <img src="../moonframe-operations.png" alt="Moonframe Operations">
-        <div class="screenshot-caption">OPERATIONS · Customers, Suppliers, Staff</div>
+        <img src="../moonframe-inventory.png" alt="Early Moonframe inventory screen" loading="lazy">
+        <div class="screenshot-caption">INVENTORY</div>
       </div>
     </div>
-
     <div class="screenshot-grid">
       <div class="screenshot">
-        <img src="../moonframe-tasks.png" alt="Moonframe Tasks">
-        <div class="screenshot-caption">TASKS · Kanban board</div>
+        <img src="../moonframe-operations.png" alt="Early Moonframe operations screen" loading="lazy">
+        <div class="screenshot-caption">OPERATIONS · Customers, suppliers, staff</div>
       </div>
       <div class="screenshot">
-        <img src="../moonframe-reports.png" alt="Moonframe Reports">
-        <div class="screenshot-caption">REPORTS · Daily summary + Moonframe Insights</div>
+        <img src="../moonframe-reports.png" alt="Early Moonframe reports screen" loading="lazy">
+        <div class="screenshot-caption">REPORTS · Daily summary</div>
       </div>
+    </div>
+  </div>
+
+  <h2>From MVP to a Real Business</h2>
+  <p>An MVP that works on my laptop and a product people pay for are different things. Getting Moonframe live meant building everything around the modules.</p>
+  <p><strong>Billing.</strong> Three plans (a free Starter tier, Business Pro and Enterprise) run through Paystack, with a 14-day trial and no card required. Pricing is region-aware: Nigeria keeps local prices, and the server decides the region, never the browser, because anything that touches money can't trust the client.</p>
+  <p><strong>Plan entitlements.</strong> An entitlement engine enforces what each plan can do (locations, staff roles, invoice limits, delivery handoffs, custom roles), and a downgrade never deletes anything: extra locations get a 30-day grace period, then freeze for new entries while all existing data stays visible.</p>
+  <p><strong>An admin console.</strong> Revenue, funnel, feature adoption, support tickets, audit log, system health and per-business overrides, so I can run the business without opening the database.</p>
+  <p><strong>A hardening pass.</strong> Right after payments went live, I went through the backend tier by tier: atomic invoice writes, input validation, retries on outbound calls, performance indexes and consolidated row-level security. Supabase's advisor warnings went from roughly 209 to 24, and every one left is a deliberate, documented exception.</p>
+
+  <div class="stat-row four">
+    <div class="stat-item">
+      <div class="stat-num">6</div>
+      <div class="stat-label">Modules</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">23</div>
+      <div class="stat-label">Edge Functions</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">78</div>
+      <div class="stat-label">DB Migrations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Person Building It</div>
     </div>
   </div>
 
   <h2>What I Built It With</h2>
-  <p>The stack choice was deliberate. Supabase handles authentication, the Postgres database, real-time subscriptions, and file storage — which means I didn't have to write, deploy, or maintain a backend. That freed me to focus on the product layer: what data to capture, how to surface it, and what the interface should feel like for someone who isn't technical.</p>
-  <p>The frontend is built in React. Multi-location support is baked in from day one, because small businesses in Nigeria often operate across more than one site. The reporting layer includes a "Moonframe Insights" feature that generates natural language summaries of business performance.</p>
+  <p>React, TypeScript and Vite on the front end, hosted on Vercel. Supabase for Postgres, authentication, storage and Edge Functions. Paystack for subscriptions. Groq for the AI weekly reports on paid plans. I build with AI tools (Claude and Antigravity), which is how one person covers product, design and engineering. The product decisions, trade-offs and reviews are mine.</p>
 
   <h2>What I Learned Building It</h2>
-  <p>The most important thing I learned had nothing to do with code. It was about infrastructure. Before Moonframe, I knew Supabase ran the app the way most people know a plane flies — functionally, without looking underneath. Building something real forced me to understand the layer beneath: what a server actually is, why PaaS platforms exist, and what deployment means step by step.</p>
-  <p>That understanding changed how I think about every product decision. Choosing a platform isn't a technical checkbox — it's a question of cost, control, scale, and what the product will need next. I wrote a full piece about it.</p>
-
-  <div class="stat-row">
-    <div class="stat-item">
-      <div class="stat-num">7</div>
-      <div class="stat-label">Core Modules Built</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">1</div>
-      <div class="stat-label">Solo Builder</div>
-    </div>
-    <div class="stat-item">
-      <div class="stat-num">0</div>
-      <div class="stat-label">Backend Written From Scratch</div>
-    </div>
-  </div>
+  <p>The first lesson was infrastructure. Before Moonframe, I knew Supabase ran the app the way most people know a plane flies. Building something real forced me to understand the layer underneath: what a server is, why platforms exist, what deployment actually does. <a href="paas.html" style="color:#000;border-bottom:2px solid #F97316;text-decoration:none">I wrote a full piece about it.</a></p>
+  <p>The second was positioning. Moonframe started as "operations, simplified", a feature list that could describe any business tool. It got sharper when I stopped listing modules and named the rule underneath them: enter it once. That sentence now decides what gets built and what doesn't.</p>
+  <p>The third was that shipping is mostly the unglamorous part. Billing edge cases, plan limits, audit logs and security warnings never show up in a demo, but they're the difference between software people try and software people trust with their money.</p>
 
   <h2>Where It Is Now</h2>
-  <p>Moonframe is an active MVP. The core modules — finances, invoicing, operations, inventory, tasks, and reports — are built and working. I'm currently iterating on the intelligence layer and planning the next round of user testing with small business owners in Abuja.</p>
+  <p>Moonframe is live at <a href="https://moonframe.live" target="_blank" rel="noopener" style="color:#000;border-bottom:2px solid #F97316;text-decoration:none">moonframe.live</a> with paid plans switched on. Its first real-world deployment is Floorkraft in Abuja, which runs inventory, deliveries, operations and invoicing on it.</p>
 
   <div class="status-banner">
     <div class="status-dot"></div>
-    <div class="status-text"><strong>Active Development</strong> — Core MVP is live. Intelligence layer in progress. Not yet publicly hosted. Watch this space.</div>
+    <div class="status-text"><strong>Live</strong> · Free Starter plan, no card required. <a href="https://moonframe.live" target="_blank" rel="noopener">Try it at moonframe.live ↗</a></div>
   </div>
 
 </div>
