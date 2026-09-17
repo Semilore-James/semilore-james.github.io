@@ -34,7 +34,7 @@ body {
   box-shadow: inset 0 0 100px rgba(0,0,0,0.8);
 }
 
-/* Wood frame — fixed borders */
+/* Wood frame, fixed borders */
 .corkboard::before {
   content: '';
   position: fixed;
@@ -84,7 +84,7 @@ body {
 }
 .back-btn:hover { background: #00ff6622; border-color: #00ff66; }
 
-/* ========== ACT ZONE — Mini corkboard per act ========== */
+/* ========== ACT ZONE · Mini corkboard per act ========== */
 .act-zone {
   position: relative;
   width: 100%;
@@ -457,11 +457,11 @@ body {
   </div>
 
   <!-- ==============================================================
-       ACT I — THE AUDIT (height: ~680px)
+       ACT I · THE AUDIT (height: ~680px)
        ============================================================== -->
   <div class="act-zone" id="act-1" style="height: 720px;">
     <svg class="string-overlay" id="strings-act1"></svg>
-    <div class="act-divider">ACT I — THE AUDIT</div>
+    <div class="act-divider">ACT I · THE AUDIT</div>
 
     <!-- Case Dossier Brief (center top) -->
     <div class="case-brief" id="a1-brief" style="top: 50px; left: 50%; transform: translateX(-50%); width: 520px; cursor: pointer;" onclick="openModal('modal-dossier')">
@@ -524,7 +524,7 @@ body {
     <div class="polaroid-card" id="a1-tunde" style="top: 280px; left: 67%; transform: rotate(1deg);" onclick="openModal('modal-tunde')">
       <div class="pushpin blue"></div>
       <div class="polaroid-photo">
-        <img src="mr_tunde.png" alt="Mr. Tunde — Person of Interest" loading="lazy">
+        <img src="mr_tunde.png" alt="Mr. Tunde, Person of Interest" loading="lazy">
       </div>
       <h4>MR. TUNDE</h4>
       <div class="poi-label">Former Lead Analyst</div>
@@ -550,11 +550,11 @@ body {
   </div>
 
   <!-- ==============================================================
-       ACT II — STRUCTURAL SABOTAGE (height: ~520px)
+       ACT II · STRUCTURAL SABOTAGE (height: ~520px)
        ============================================================== -->
   <div class="act-zone" id="act-2" style="height: 520px;">
     <svg class="string-overlay" id="strings-act2"></svg>
-    <div class="act-divider">ACT II — STRUCTURAL SABOTAGE</div>
+    <div class="act-divider">ACT II · STRUCTURAL SABOTAGE</div>
 
     <!-- Lead 06: AM Q2 Dashboard Pivots -->
     <div class="clue-card" id="a2-pivots" style="top: 60px; left: 5%; transform: rotate(-1.5deg);" onclick="openModal('modal-am-pivots')">
@@ -588,15 +588,15 @@ body {
       <div class="pushpin"></div>
       <h3>LEAD 09 // 12,543 DUPLICATES</h3>
       <p class="card-lead"><strong>Exact copies found.</strong></p>
-      <p>12,543 duplicate transaction rows. Some identical across all 18 columns — copy-paste artifacts.</p>
+      <p>12,543 duplicate transaction rows. Some identical across all 18 columns, copy-paste artifacts.</p>
       <div class="badge">Data Integrity</div>
     </div>
 
-    <!-- Mr. Tunde appears again here — as a string target -->
+    <!-- Mr. Tunde appears again here, as a string target -->
     <div class="polaroid-card" id="a2-tunde-link" style="top: 100px; left: 62%; transform: rotate(-1.5deg);" onclick="openModal('modal-tunde')">
       <div class="pushpin blue"></div>
       <div class="polaroid-photo">
-        <img src="mr_tunde.png" alt="Mr. Tunde — trail continues" loading="lazy">
+        <img src="mr_tunde.png" alt="Mr. Tunde, trail continues" loading="lazy">
       </div>
       <h4>MR. TUNDE</h4>
       <div class="poi-label">Trail Continues</div>
@@ -610,17 +610,17 @@ body {
   </div>
 
   <!-- ==============================================================
-       ACT III — THE VERDICT (height: ~480px)
+       ACT III · THE VERDICT (height: ~480px)
        ============================================================== -->
   <div class="act-zone" id="act-3" style="height: 480px;">
     <svg class="string-overlay" id="strings-act3"></svg>
-    <div class="act-divider">ACT III — THE VERDICT</div>
+    <div class="act-divider">ACT III · THE VERDICT</div>
 
     <!-- Mrs. Folake: Suspect Polaroid -->
     <div class="polaroid-card" id="a3-folake" style="top: 60px; left: 50%; transform: translateX(-50%) rotate(-1.5deg);" onclick="openModal('modal-folake')">
       <div class="pushpin blue"></div>
       <div class="polaroid-photo">
-        <img src="mrs_folake.png" alt="Mrs. Folake Adebayo — Chief Accountant" loading="lazy">
+        <img src="mrs_folake.png" alt="Mrs. Folake Adebayo, Chief Accountant" loading="lazy">
       </div>
       <h4>MRS. FOLAKE ADEBAYO</h4>
       <div class="poi-label">Chief Accountant</div>
@@ -632,7 +632,7 @@ body {
       <div class="pushpin"></div>
       <h3>THE INTERROGATION PIVOT</h3>
       <p class="card-lead"><strong>Sales reps cleared.</strong></p>
-      <p>Ghost revenue distributed evenly across all 40+ reps. No individual spike. This was systemic — pointing to centralized accounting oversight.</p>
+      <p>Ghost revenue distributed evenly across all 40+ reps. No individual spike. This was systemic, pointing to centralized accounting oversight.</p>
       <div class="badge">Verdict</div>
     </div>
 
@@ -670,13 +670,13 @@ body {
         <strong>Analyst:</strong> Semilore James &nbsp;·&nbsp;
         <strong>Engagement:</strong> GridView Analytics (simulated), June 2026
       </p>
-      <p><strong>ACT I — The Audit:</strong><br>
-      150,000 rows. 18 columns. Handed over after Mr. Tunde's sudden emergency medical leave — two weeks before the scheduled audit. Surface cleaning exposed mixed date formats, 13 promo flag variants, missing unit prices across 7,664 rows, and 19,045 blank revenue entries.</p>
-      <p style="margin-top:12px"><strong>ACT II — Structural Sabotage:</strong><br>
-      Building the Account Manager's 5 Q2 pivot questions revealed far deeper corruption. Store codes were mapped to 10+ different store names. Region labels were randomly paired across all 21 Nigerian states in 14 different variants. 12,543 duplicate transactions sat hidden in the data. And buried beneath it all — <strong>1,656 rows tagged INF carrying ₦337,974,601 in ghost revenue</strong> with no product identity attached.</p>
-      <p style="margin-top:12px"><strong>ACT III — The Verdict:</strong><br>
-      Initial suspicion fell on sales reps. Statistical analysis cleared them — the ghost revenue was distributed too evenly across all 40+ reps and 6 regions to be any individual's doing. Suspicion pivoted to <strong>Mrs. Folake Adebayo, Chief Accountant</strong>. How did ₦337M in unattached journal entries pass through monthly reconciliations bearing her signature without a single discrepancy ticket?</p>
-      <p style="margin-top:16px; font-style:italic; color:#888;">Investigation status: <strong style="color:#cc8800;">OPEN</strong> — further forensic analysis ongoing.</p>
+      <p><strong>ACT I · The Audit:</strong><br>
+      150,000 rows. 18 columns. Handed over after Mr. Tunde's sudden emergency medical leave, two weeks before the scheduled audit. Surface cleaning exposed mixed date formats, 13 promo flag variants, missing unit prices across 7,664 rows, and 19,045 blank revenue entries.</p>
+      <p style="margin-top:12px"><strong>ACT II · Structural Sabotage:</strong><br>
+      Building the Account Manager's 5 Q2 pivot questions revealed far deeper corruption. Store codes were mapped to 10+ different store names. Region labels were randomly paired across all 21 Nigerian states in 14 different variants. 12,543 duplicate transactions sat hidden in the data. And buried beneath it all, <strong>1,656 rows tagged INF carrying ₦337,974,601 in ghost revenue</strong> with no product identity attached.</p>
+      <p style="margin-top:12px"><strong>ACT III · The Verdict:</strong><br>
+      Initial suspicion fell on sales reps. Statistical analysis cleared them: the ghost revenue was distributed too evenly across all 40+ reps and 6 regions to be any individual's doing. Suspicion pivoted to <strong>Mrs. Folake Adebayo, Chief Accountant</strong>. How did ₦337M in unattached journal entries pass through monthly reconciliations bearing her signature without a single discrepancy ticket?</p>
+      <p style="margin-top:16px; font-style:italic; color:#888;">Investigation status: <strong style="color:#cc8800;">OPEN</strong> · further forensic analysis ongoing.</p>
     </div>
   </div>
 </div>
@@ -792,7 +792,7 @@ body {
         <div>
           <p><strong>Role:</strong> Senior Commercial Analyst, Palmridge Account Lead</p>
           <p style="margin-top:6px"><strong>Status:</strong> <span style="color:#cc8800; font-weight:bold;">PRIMARY SUSPECT</span></p>
-          <p style="margin-top:6px"><strong>Last Known Activity:</strong> Emergency medical leave — 2 weeks before scheduled audit</p>
+          <p style="margin-top:6px"><strong>Last Known Activity:</strong> Emergency medical leave, 2 weeks before scheduled audit</p>
         </div>
       </div>
       <p><strong>The Profile:</strong> Mr. Tunde was the sole custodian of the Palmridge sales sheet for two years. He designed the original reporting structures. Two weeks before the annual audit, he applied for emergency leave and handed over a raw, un-audited CSV of 150,000 chaotic rows.</p>
@@ -800,7 +800,7 @@ body {
       <ul style="margin-left:20px; margin-top:5px;">
         <li style="margin-top:5px">He signed off on monthly reports showing 100% data integrity, yet the underlying ledger is full of mismatches.</li>
         <li style="margin-top:5px">He was the last user to access the CSV before the system logged a bulk database edit.</li>
-        <li style="margin-top:5px">Multiple reps reported region and discount discrepancies to him — none were logged or resolved.</li>
+        <li style="margin-top:5px">Multiple reps reported region and discount discrepancies to him, and none were logged or resolved.</li>
       </ul>
       <p style="margin-top:15px"><strong>Investigation Verdict:</strong> Suspicious. Either hiding massive operational negligence, or actively cooperating with external parties to misreport. <em>Investigation remains open.</em></p>
     </div>
@@ -861,7 +861,7 @@ body {
         <li><strong>Geographic Heavyweight:</strong> South-West dominated (peaking above ₦30M/quarter), North-East under ₦5M.</li>
         <li><strong>Sales Rep Leaderboard:</strong> Mrs. Mandy Barrett led at ₦500M+ volume.</li>
       </ul>
-      <p style="margin-top:12px"><strong>Forensic Insight:</strong> Creating these pivots exposed the deeper structural randomization — store codes linked to 10+ names, mismatched states, and ghost transactions that surface cleaning never caught.</p>
+      <p style="margin-top:12px"><strong>Forensic Insight:</strong> Creating these pivots exposed the deeper structural randomization: store codes linked to 10+ names, mismatched states, and ghost transactions that surface cleaning never caught.</p>
     </div>
   </div>
 </div>
@@ -881,7 +881,7 @@ body {
     <div class="modal-text">
       <p><strong>The Anomaly:</strong> <strong>1,656 rows</strong> had blank product identities tagged <code>INF</code>, yet contained valid transaction IDs, stores, reps, and <strong>₦337,974,601</strong> in revenue.</p>
       <p style="margin-top:10px"><strong>Why Reps Weren't Blamed:</strong> <code>INF</code> ghost revenue was distributed almost evenly across all 40+ reps, all 6 regions, all channels. No individual spike.</p>
-      <p style="margin-top:10px"><strong>The Sabotage Mechanism:</strong> Ghost entries passed through centralized journal reconciliations — pointing directly to administrative and accounting oversight.</p>
+      <p style="margin-top:10px"><strong>The Sabotage Mechanism:</strong> Ghost entries passed through centralized journal reconciliations, pointing directly to administrative and accounting oversight.</p>
     </div>
   </div>
 </div>

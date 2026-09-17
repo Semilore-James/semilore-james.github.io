@@ -3,12 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Atolagbe Semilore James — Product Manager</title>
+<title>Atolagbe Semilore James · Product Manager</title>
 <meta name="description" content="Semilore Atolagbe is a Product Manager in Abuja who ships products and builds the tools to ship them faster. Founder of Moonframe.">
 <link rel="canonical" href="https://semilore-james.github.io/">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://semilore-james.github.io/">
-<meta property="og:title" content="Atolagbe Semilore James — Product Manager">
+<meta property="og:title" content="Atolagbe Semilore James · Product Manager">
 <meta property="og:description" content="I ship products. Then I build tools to ship them faster. Founder of Moonframe.">
 <meta property="og:image" content="https://semilore-james.github.io/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -75,6 +75,19 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 .about-text.visible{animation:slideInRight 0.6s ease 0.2s forwards}
 .about-text p{font-size:18px;line-height:1.7;color:#000;margin-bottom:24px}
 .about-tags{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+
+/* ABOUT AS STORY */
+.about-text .story-open{font-size:20px;line-height:1.65}
+.about-text .story-open::first-letter{float:left;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:72px;line-height:0.78;padding:4px 12px 0 0;color:#F97316}
+.about-text .story-turn{font-family:'Space Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.15em;color:#F97316;margin:32px 0 12px;display:flex;align-items:center;gap:12px}
+.about-text .story-turn::after{content:'';flex:1;height:3px;background:#000}
+.about-text .story-close{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:22px;line-height:1.4;border-left:8px solid #F97316;padding-left:20px;margin-top:28px}
+.beats{display:flex;flex-wrap:wrap;gap:0;margin-top:36px;border:4px solid #000;box-shadow:6px 6px 0 #000;background:#fff}
+.beat{flex:1 1 130px;padding:16px 14px;border-right:4px solid #000;min-width:0}
+.beat:last-child{border-right:none}
+.beat-year{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.12em;color:#888}
+.beat-what{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;margin-top:6px;line-height:1.4}
+.beat.on .beat-what{color:#F97316}
 .tag{display:inline-block;font-family:'Space Mono',monospace;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;padding:6px 14px;border:3px solid #000;border-radius:2px}
 .tag-orange{background:#F97316;color:#fff}
 .tag-outline{background:#fff;color:#000}
@@ -121,6 +134,18 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 #skills{padding:96px 80px;border-top:4px solid #000;background:#fff;overflow:hidden}
 .skills-sub{font-family:'Space Mono',monospace;font-size:13px;color:#666;margin-bottom:48px;margin-top:12px}
 .skills-cloud{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-start;max-width:1152px;margin:0 auto}
+
+/* SKILLS AS CHAPTERS */
+.chapters{max-width:1152px;margin:0 auto;border-top:4px solid #000}
+.chapter{display:grid;grid-template-columns:300px 1fr;gap:40px;padding:40px 0;border-bottom:4px solid #000;align-items:start}
+.chapter-head{position:relative}
+.chapter-num{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:0.15em;color:#F97316}
+.chapter-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:30px;letter-spacing:-0.02em;margin-top:6px;line-height:1.1}
+.chapter-line{font-family:'Space Mono',monospace;font-size:14px;line-height:1.75;color:#111;min-height:3.5em}
+.chapter-line .caret{display:inline-block;width:9px;height:17px;background:#F97316;margin-left:3px;vertical-align:-3px;animation:blink 1s step-end infinite}
+.chapter.typed .caret{display:none}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.chapter-tags{display:flex;flex-wrap:wrap;gap:12px}
 .skill-tag{--r:0deg;display:inline-block;font-family:'Space Mono',monospace;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:0.08em;padding:10px 18px;border:3px solid #000;border-radius:2px;box-shadow:3px 3px 0 #000;cursor:default;transition:transform 0.3s;opacity:0;transform:scale(0.8) rotate(var(--r))}
 .skill-tag.visible{animation:scaleIn 0.4s ease forwards}
 .skill-tag.done{animation:none;opacity:1;transform:rotate(var(--r))}
@@ -177,6 +202,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 /* NO-JS + REDUCED MOTION: never leave content invisible */
 @media (prefers-reduced-motion: reduce){
   html{scroll-behavior:auto}
+  .chapter-line .caret{display:none}
   .hero-label,.hero-identity,.hero-name,.hero-role,.hero-btns,.about-img-box,.about-text,.project-card,.lab-card,.case-row,.skill-tag,.contact-heading,.contact-sub,.btn-contact,.social-links,.copyright{opacity:1 !important;animation:none !important;transform:rotate(var(--r,0deg)) !important}
 }
 
@@ -186,6 +212,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 
 /* TABLET */
 @media(max-width:1024px){
+  .chapter{grid-template-columns:220px 1fr;gap:28px}
   nav{padding:0 40px}
   #hero,#about,#work,#building,#case-studies,#skills,#contact{padding:72px 40px}
   .projects-grid{grid-template-columns:repeat(2,1fr);gap:28px}
@@ -212,6 +239,13 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   .hero-btns{flex-direction:column;align-items:center}
   .skills-cloud{gap:10px}
   .skill-tag{font-size:11px;padding:8px 12px}
+  .chapter{grid-template-columns:1fr;gap:20px;padding:32px 0}
+  .chapter-name{font-size:24px}
+  .about-text .story-open{font-size:18px}
+  .about-text .story-open::first-letter{font-size:58px}
+  .about-text .story-close{font-size:19px;padding-left:16px}
+  .beat{flex:1 1 100%;border-right:none;border-bottom:4px solid #000}
+  .beat:last-child{border-bottom:none}
 }
 </style>
 <noscript><style>
@@ -239,7 +273,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
     <li><a href="#case-studies">Writing</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="cases/index.html" class="nav-cases-link">🔍 Cases</a></li>
+    <li><a href="cases/index.html" class="nav-cases-link">Cases</a></li>
   </ul>
 </nav>
 
@@ -264,7 +298,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 <!-- ABOUT -->
 <section id="about">
   <div style="max-width:1152px;margin:0 auto">
-    <h2 class="section-heading">Who I Am</h2>
+    <h2 class="section-heading">How I Got Here</h2>
     <div class="about-grid">
       <div class="about-img-box has-photo" id="about-img">
         <div class="deco-sq"></div>
@@ -272,10 +306,21 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
         <img src="semilore-headshot.jpg" alt="Portrait of Atolagbe Semilore James" width="720" height="960">
       </div>
       <div class="about-text" id="about-text">
-        <p>I'm a Product Manager who builds things. Not metaphorically — I ship internal tools, automations, and apps using AI, and I can read HTML, CSS, JavaScript, React, and React Native well enough to have real conversations with engineers, file meaningful bug reports, and understand tradeoffs before they become problems.</p>
-        <p>My background spans fintech, Web3 gaming, and e-commerce. I write specs engineers can build from without a back-and-forth. I own roadmaps, talk to users, and stay close enough to the product to notice what's actually broken versus what's just loud.</p>
-        <p>Right now I'm a Product Manager at Ortho Technologies and a Project Manager at Floorkraft, and I'm the founder of <a href="work/moonframe.html" style="color:#000;border-bottom:2px solid #F97316;text-decoration:none">Moonframe</a>, which grew out of the problems I kept seeing at both.</p>
-        <p>I think in systems. I build when I see gaps.</p>
+        <p class="story-open">It starts with a mechanical engineering student who looked at the world with absolute wonder. He wired spare parts into remote control cars. He built helicopters that never took off, then built them again anyway, because the flying was never really the point. Finding out how the thing worked was.</p>
+
+        <div class="story-turn">Then the tools changed</div>
+        <p>The curiosity stayed exactly where it was. These days he writes the specs and the documents instead: the roadmap, the product decision, the shape of a system drawn out before anyone builds it. Same instinct as the spare parts, bigger machines.</p>
+        <p>He is a planner. A great enthusiast of understanding. A lover of curiosity who would rather take a thing apart than be told what it does. Fintech, Web3 gaming, e-commerce, and a flooring warehouse in Abuja have each taught him something about how businesses really run, and each one left him holding a tool that did not exist yet.</p>
+
+        <p class="story-close">So he built it. That is the whole pattern: ship the product, then build what the product was missing.</p>
+
+        <div class="beats" id="beats">
+          <div class="beat"><div class="beat-year">The beginning</div><div class="beat-what">Spare parts, RC cars, helicopters that stayed grounded</div></div>
+          <div class="beat"><div class="beat-year">2024</div><div class="beat-what">B.Eng Mechanical Engineering, FUT Minna</div></div>
+          <div class="beat"><div class="beat-year">2023 onward</div><div class="beat-what">Specs, roadmaps and launches across three industries</div></div>
+          <div class="beat"><div class="beat-year">Now</div><div class="beat-what">Building Moonframe, live and earning</div></div>
+        </div>
+
         <div class="about-tags">
           <span class="tag tag-orange">Fintech</span>
           <span class="tag tag-outline">Web3 Gaming</span>
@@ -447,29 +492,87 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 <!-- SKILLS -->
 <section id="skills">
   <div style="max-width:1152px;margin:0 auto">
-    <h2 class="section-heading" style="margin-bottom:12px">Skills & Tools</h2>
-    <p class="skills-sub">What I actually know vs what I just listed on LinkedIn</p>
-    <div class="skills-cloud">
-      <span class="skill-tag sk-orange" id="sk-0" style="--r:-2deg">Product Strategy</span>
-      <span class="skill-tag sk-outline" id="sk-1" style="--r:2deg">PRD Writing</span>
-      <span class="skill-tag sk-orange" id="sk-2" style="--r:-1deg">Roadmapping</span>
-      <span class="skill-tag sk-outline" id="sk-3" style="--r:3deg">User Research</span>
-      <span class="skill-tag sk-orange" id="sk-4" style="--r:-2deg">A/B Testing</span>
-      <span class="skill-tag sk-outline" id="sk-5" style="--r:1deg">RICE / MoSCoW</span>
-      <span class="skill-tag sk-orange" id="sk-6" style="--r:-3deg">Sprint Planning</span>
-      <span class="skill-tag sk-outline" id="sk-7" style="--r:2deg">HTML · CSS · JS</span>
-      <span class="skill-tag sk-orange" id="sk-8" style="--r:-1deg">React Native</span>
-      <span class="skill-tag sk-outline" id="sk-9" style="--r:2deg">Supabase</span>
-      <span class="skill-tag sk-orange" id="sk-10" style="--r:-2deg">Make.com</span>
-      <span class="skill-tag sk-outline" id="sk-11" style="--r:1deg">Zapier</span>
-      <span class="skill-tag sk-orange" id="sk-12" style="--r:-1deg">ClickUp</span>
-      <span class="skill-tag sk-outline" id="sk-13" style="--r:3deg">Notion</span>
-      <span class="skill-tag sk-orange" id="sk-14" style="--r:-2deg">Power BI</span>
-      <span class="skill-tag sk-outline" id="sk-15" style="--r:1deg">Advanced Excel</span>
-      <span class="skill-tag sk-orange" id="sk-16" style="--r:-1deg">Go-to-Market</span>
-      <span class="skill-tag sk-outline" id="sk-17" style="--r:2deg">Stakeholder Mgmt</span>
-      <span class="skill-tag sk-orange" id="sk-18" style="--r:-3deg">Claude · AI Tooling</span>
-      <span class="skill-tag sk-outline" id="sk-19" style="--r:1deg">Agile / Scrum</span>
+    <h2 class="section-heading" style="margin-bottom:12px">Skills &amp; Tools</h2>
+    <p class="skills-sub">Not a list. The order I actually use them in.</p>
+    <div class="chapters">
+      <div class="chapter" id="ch-0">
+        <div class="chapter-head">
+          <div class="chapter-num">CHAPTER 01</div>
+          <div class="chapter-name">Deciding what to build</div>
+        </div>
+        <div>
+          <p class="chapter-line" data-text="Every build starts as an argument about what deserves to exist. I write the spec that settles it, then keep the roadmap honest when the plan meets reality."><span class="caret"></span></p>
+          <div class="chapter-tags">
+          <span class="skill-tag sk-orange" style="--r:-2deg">Product Strategy</span>
+          <span class="skill-tag sk-outline" style="--r:2deg">PRD Writing</span>
+          <span class="skill-tag sk-orange" style="--r:-1deg">Roadmapping</span>
+          <span class="skill-tag sk-outline" style="--r:3deg">User Research</span>
+          <span class="skill-tag sk-orange" style="--r:-3deg">RICE / MoSCoW</span>
+          <span class="skill-tag sk-outline" style="--r:1deg">Sprint Planning</span>
+          <span class="skill-tag sk-orange" style="--r:-2deg">Agile / Scrum</span>
+          <span class="skill-tag sk-outline" style="--r:2deg">Go-to-Market</span>
+          <span class="skill-tag sk-orange" style="--r:-1deg">Stakeholder Mgmt</span>
+          </div>
+        </div>
+      </div>
+      <div class="chapter" id="ch-1">
+        <div class="chapter-head">
+          <div class="chapter-num">CHAPTER 02</div>
+          <div class="chapter-name">Knowing whether it worked</div>
+        </div>
+        <div>
+          <p class="chapter-line" data-text="A dashboard that counts the wrong thing is worse than no dashboard at all. I learned that the hard way, so now the measurement gets designed before the feature ships."><span class="caret"></span></p>
+          <div class="chapter-tags">
+          <span class="skill-tag sk-orange" style="--r:-2deg">Mixpanel</span>
+          <span class="skill-tag sk-outline" style="--r:2deg">A/B Testing</span>
+          <span class="skill-tag sk-orange" style="--r:-1deg">SQL</span>
+          <span class="skill-tag sk-outline" style="--r:3deg">Power BI</span>
+          <span class="skill-tag sk-orange" style="--r:-3deg">DAX</span>
+          <span class="skill-tag sk-outline" style="--r:1deg">ClickUp API</span>
+          <span class="skill-tag sk-orange" style="--r:-2deg">Dashboard Design</span>
+          <span class="skill-tag sk-outline" style="--r:2deg">Advanced Excel</span>
+          </div>
+        </div>
+      </div>
+      <div class="chapter" id="ch-2">
+        <div class="chapter-head">
+          <div class="chapter-num">CHAPTER 03</div>
+          <div class="chapter-name">Building it myself</div>
+        </div>
+        <div>
+          <p class="chapter-line" data-text="When the tool I need does not exist, I stop waiting for it. Moonframe, an analytics tracker, a warehouse dashboard: all shipped, all mine, all built with AI doing the typing."><span class="caret"></span></p>
+          <div class="chapter-tags">
+          <span class="skill-tag sk-orange" style="--r:-2deg">HTML · CSS · JS</span>
+          <span class="skill-tag sk-outline" style="--r:2deg">React</span>
+          <span class="skill-tag sk-orange" style="--r:-1deg">Flutter</span>
+          <span class="skill-tag sk-outline" style="--r:3deg">Supabase</span>
+          <span class="skill-tag sk-orange" style="--r:-3deg">Claude · AI Tooling</span>
+          <span class="skill-tag sk-outline" style="--r:1deg">Antigravity</span>
+          <span class="skill-tag sk-orange" style="--r:-2deg">Make.com</span>
+          <span class="skill-tag sk-outline" style="--r:2deg">Zapier</span>
+          </div>
+        </div>
+      </div>
+      <div class="chapter" id="ch-3">
+        <div class="chapter-head">
+          <div class="chapter-num">CHAPTER 04</div>
+          <div class="chapter-name">Keeping it standing</div>
+        </div>
+        <div>
+          <p class="chapter-line" data-text="The unglamorous half. Documentation nobody asked for, boards that stay current, and teams that know what is happening without a meeting about it."><span class="caret"></span></p>
+          <div class="chapter-tags">
+          <span class="skill-tag sk-orange" style="--r:-2deg">ClickUp</span>
+          <span class="skill-tag sk-outline" style="--r:2deg">Jira</span>
+          <span class="skill-tag sk-orange" style="--r:-1deg">Trello</span>
+          <span class="skill-tag sk-outline" style="--r:3deg">Notion</span>
+          <span class="skill-tag sk-orange" style="--r:-3deg">Slack</span>
+          <span class="skill-tag sk-outline" style="--r:1deg">Figma</span>
+          <span class="skill-tag sk-orange" style="--r:-2deg">Miro</span>
+          <span class="skill-tag sk-outline" style="--r:2deg">Substack</span>
+          <span class="skill-tag sk-orange" style="--r:-1deg">WordPress</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -478,7 +581,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 <section id="contact">
   <div class="contact-inner">
     <h2 class="contact-heading" id="c-head">LET'S BUILD<br>SOMETHING.</h2>
-    <p class="contact-sub" id="c-sub">Product roles, consulting, or interesting problems — I'm listening.</p>
+    <p class="contact-sub" id="c-sub">Product roles, consulting, or interesting problems. I'm listening.</p>
     <a href="mailto:jimmyatolagbe@gmail.com" class="btn-contact" id="c-btn">Email Me</a>
     <p class="contact-alt">or <a href="https://x.com/messages/compose?recipient_id=1831135559634309122" target="_blank" rel="noopener">send me a DM on X</a></p>
     <div class="social-links" id="c-social">
@@ -514,7 +617,43 @@ const io = new IntersectionObserver((entries)=>{
 [0,1,2].forEach(i=>{const c=document.getElementById('card-'+i);if(c){c.style.animationDelay=(i*0.15)+'s';io.observe(c)}});
 [0,1].forEach(i=>{const c=document.getElementById('lab-'+i);if(c){c.style.animationDelay=(i*0.15)+'s';io.observe(c)}});
 [0,1,2].forEach(i=>{const r=document.getElementById('cr-'+i);if(r){r.style.animationDelay=(i*0.1)+'s';io.observe(r)}});
-for(let i=0;i<20;i++){const s=document.getElementById('sk-'+i);if(s){s.style.animationDelay=(i*0.04)+'s';io.observe(s)}}
+// Skills chapters: type the line, then pop the tags in
+const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+function playChapter(ch){
+  const line=ch.querySelector('.chapter-line');
+  const caret=line.querySelector('.caret');
+  const text=line.dataset.text||'';
+  const tags=ch.querySelectorAll('.skill-tag');
+  const showTags=()=>tags.forEach((t,i)=>{t.style.animationDelay=(i*0.05)+'s';t.classList.add('visible')});
+  if(reduce){line.textContent=text;ch.classList.add('typed');showTags();return}
+  let i=0;
+  const tick=()=>{
+    if(i<text.length){
+      caret.insertAdjacentText('beforebegin',text[i++]);
+      setTimeout(tick, text[i-1]===',' || text[i-1]==='.' ? 90 : 14);
+    } else {ch.classList.add('typed');showTags()}
+  };
+  tick();
+}
+const chapterIO=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){chapterIO.unobserve(e.target);playChapter(e.target)}
+  });
+},{threshold:0.25});
+document.querySelectorAll('.chapter').forEach(ch=>chapterIO.observe(ch));
+
+// About timeline: light each beat up in sequence
+const beatsEl=document.getElementById('beats');
+if(beatsEl){
+  const beatIO=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting) return;
+      beatIO.unobserve(e.target);
+      e.target.querySelectorAll('.beat').forEach((b,i)=>setTimeout(()=>b.classList.add('on'), reduce?0:i*220));
+    });
+  },{threshold:0.4});
+  beatIO.observe(beatsEl);
+}
 ['c-head','c-sub','c-btn','c-social','c-copy'].forEach((id,i)=>{
   const el=document.getElementById(id);
   if(el){el.style.animationDelay=(i*0.1)+'s';io.observe(el)}

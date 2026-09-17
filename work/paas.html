@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Invisible Infrastructure — Atolagbe Semilore James</title>
+<title>The Invisible Infrastructure · Atolagbe Semilore James</title>
 <link rel="icon" type="image/png" href="../favicon-32.png">
 <link rel="apple-touch-icon" href="../apple-touch-icon.png">
 <style>
@@ -109,9 +109,9 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 
 <div class="article-body">
 
-  <p>A business operations tool I built called Moonframe was designed for small businesses managing revenue, inventory, expenses and tasks in one place — and it runs on Supabase.</p>
+  <p>A business operations tool I built called Moonframe was designed for small businesses managing revenue, inventory, expenses and tasks in one place, and it runs on Supabase.</p>
 
-  <p>For a long time that sentence was the full extent of what I knew. It runs on Supabase. The dashboard loads. The data persists. Users log in and their information is there waiting for them. The infrastructure beneath all of that — the servers, the deployment pipeline, the networking, the difference between the platform I chose and the twenty others I could have chosen — was a layer I had never looked at directly.</p>
+  <p>For a long time that sentence was the full extent of what I knew. It runs on Supabase. The dashboard loads. The data persists. Users log in and their information is there waiting for them. The infrastructure beneath all of that (the servers, the deployment pipeline, the networking, the difference between the platform I chose and the twenty others I could have chosen) was a layer I had never looked at directly.</p>
 
   <p>They just seemed to be.</p>
 
@@ -121,14 +121,14 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 
   <h2>What a Server Actually Is</h2>
 
-  <p>When you visit any website — a bank, a news platform, an e-commerce store — something on the other end received your request and sent back what you see on your screen. That something is a server.</p>
+  <p>When you visit any website (a bank, a news platform, an e-commerce store), something on the other end received your request and sent back what you see on your screen. That something is a server.</p>
 
-  <p>A server is a computer. Not metaphorically — literally a computer with a processor, memory, and storage, running software. The difference between a server and the laptop this was written on is not fundamental capability. It is purpose, location, and continuity.</p>
+  <p>A server is a computer. Not metaphorically. Literally a computer with a processor, memory, and storage, running software. The difference between a server and the laptop this was written on is not fundamental capability. It is purpose, location, and continuity.</p>
 
   <p>Servers live in data centers: large facilities built specifically to keep computers running without interruption. Industrial cooling systems prevent overheating. Redundant power supplies ensure they never go dark. Permanent, high-speed internet connections mean they are reachable from anywhere in the world at any time. A laptop sleeps, overheats, disconnects. A server in a data center does none of those things.</p>
 
   <div class="pull-quote">
-    <p>"The moment you need someone else — anywhere, at any time — to access what you built, you need a machine that is always on, always connected, and always reachable."</p>
+    <p>"The moment you need someone else, anywhere and at any time, to access what you built, you need a machine that is always on, always connected, and always reachable."</p>
   </div>
 
   <h2>IaaS, PaaS, and BaaS: The Difference That Changes Everything</h2>
@@ -138,7 +138,7 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   <div class="def-block">
     <div class="def-header">
       <span class="def-label">Model 01</span>
-      <span class="def-name">IaaS — Infrastructure as a Service</span>
+      <span class="def-name">IaaS · Infrastructure as a Service</span>
     </div>
     <div class="def-body">
       <p>When a developer rents infrastructure from a provider like AWS, Google Cloud, or Microsoft Azure, they receive what is essentially an empty, powerful computer in a data center. The operating system needs installing. The security needs configuring. The networking needs setting up. Every layer between the raw hardware and the running product is the developer's responsibility to build and maintain.</p>
@@ -149,11 +149,11 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   <div class="def-block">
     <div class="def-header">
       <span class="def-label">Model 02</span>
-      <span class="def-name">PaaS — Platform as a Service</span>
+      <span class="def-name">PaaS · Platform as a Service</span>
     </div>
     <div class="def-body">
-      <p>PaaS removes the construction burden. Platforms like Vercel, Railway, and Render have already built the infrastructure layer — the operating system is managed, the security is handled, the networking is configured. A developer brings their code and the platform runs it. Deployment is automated. Monitoring is built in. Scaling is handled.</p>
-      <p>The tradeoff is control. PaaS makes the infrastructure invisible — which is its strength for speed and simplicity, and its limitation when a product needs something the platform wasn't designed to handle.</p>
+      <p>PaaS removes the construction burden. Platforms like Vercel, Railway, and Render have already built the infrastructure layer: the operating system is managed, the security is handled, the networking is configured. A developer brings their code and the platform runs it. Deployment is automated. Monitoring is built in. Scaling is handled.</p>
+      <p>The tradeoff is control. PaaS makes the infrastructure invisible, which is its strength for speed and simplicity, and its limitation when a product needs something the platform wasn't designed to handle.</p>
       <div class="def-analogy">→ The prepackaged apartment. Everything needed to move in is already there.</div>
     </div>
   </div>
@@ -161,11 +161,11 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
   <div class="def-block">
     <div class="def-header">
       <span class="def-label">Model 03</span>
-      <span class="def-name">BaaS — Backend as a Service</span>
+      <span class="def-name">BaaS · Backend as a Service</span>
     </div>
     <div class="def-body">
-      <p>BaaS sits one layer above PaaS. Where PaaS gives developers an environment to run the backend code they write, BaaS gives them pre-built backend services they don't have to write at all. Authentication, databases, file storage, real-time data — a BaaS provider like Supabase has already built these systems.</p>
-      <p>Moonframe runs on Supabase. Its user authentication, its data storage, its real-time updates — none of that required writing a backend from scratch. For a solo builder moving fast, that tradeoff — less control, dramatically less complexity — was the right one.</p>
+      <p>BaaS sits one layer above PaaS. Where PaaS gives developers an environment to run the backend code they write, BaaS gives them pre-built backend services they don't have to write at all. Authentication, databases, file storage, real-time data: a BaaS provider like Supabase has already built these systems.</p>
+      <p>Moonframe runs on Supabase. Its user authentication, its data storage, its real-time updates: none of that required writing a backend from scratch. For a solo builder moving fast, that tradeoff, less control for dramatically less complexity, was the right one.</p>
       <div class="def-analogy">→ The prepackaged apartment with furniture, utilities, and a concierge included.</div>
     </div>
   </div>
@@ -179,28 +179,28 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
       <div class="step-num"><span>01</span></div>
       <div class="step-content">
         <div class="step-title">The Push</div>
-        <div class="step-desc">The developer finishes writing code. They use Git to package every change into a labeled snapshot called a commit. That commit gets pushed to a code repository — most commonly GitHub. Nothing is lost. Everything is reversible.</div>
+        <div class="step-desc">The developer finishes writing code. They use Git to package every change into a labeled snapshot called a commit. That commit gets pushed to a code repository, most commonly GitHub. Nothing is lost. Everything is reversible.</div>
       </div>
     </div>
     <div class="step-item">
       <div class="step-num"><span>02</span></div>
       <div class="step-content">
         <div class="step-title">The Trigger</div>
-        <div class="step-desc">The PaaS platform is watching that repository. The moment new code arrives, the platform detects it automatically and fires a build pipeline — an automated sequence of steps the platform runs on the code before anything goes live.</div>
+        <div class="step-desc">The PaaS platform is watching that repository. The moment new code arrives, the platform detects it automatically and fires a build pipeline, an automated sequence of steps the platform runs on the code before anything goes live.</div>
       </div>
     </div>
     <div class="step-item">
       <div class="step-num"><span>03</span></div>
       <div class="step-content">
         <div class="step-title">The Build</div>
-        <div class="step-desc">The platform compiles the code and installs dependencies. If a dependency is missing or incompatible, the build fails here. This is why the phrase "it works on my machine" exists — the platform's environment isn't the developer's laptop.</div>
+        <div class="step-desc">The platform compiles the code and installs dependencies. If a dependency is missing or incompatible, the build fails here. This is why the phrase "it works on my machine" exists: the platform's environment isn't the developer's laptop.</div>
       </div>
     </div>
     <div class="step-item">
       <div class="step-num"><span>04</span></div>
       <div class="step-content">
         <div class="step-title">The Checks</div>
-        <div class="step-desc">If the developer has written automated tests, the platform runs them now. A failed test stops the deployment immediately. Nothing broken reaches users. This is not a malfunction — it is the safety net working correctly.</div>
+        <div class="step-desc">If the developer has written automated tests, the platform runs them now. A failed test stops the deployment immediately. Nothing broken reaches users. This is not a malfunction. It is the safety net working correctly.</div>
       </div>
     </div>
     <div class="step-item">
@@ -214,12 +214,12 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
       <div class="step-num"><span>06</span></div>
       <div class="step-content">
         <div class="step-title">The Monitoring</div>
-        <div class="step-desc">The platform watches the running application continuously — tracking errors, response times, and resource usage. If something breaks critically, some platforms automatically roll back to the previous working version while the developer investigates.</div>
+        <div class="step-desc">The platform watches the running application continuously, tracking errors, response times, and resource usage. If something breaks critically, some platforms automatically roll back to the previous working version while the developer investigates.</div>
       </div>
     </div>
   </div>
 
-  <p>The entire sequence — from push to live — can take anywhere from thirty seconds to several minutes. This sequence is what developers mean when they say CI/CD: Continuous Integration and Continuous Deployment.</p>
+  <p>The entire sequence, from push to live, can take anywhere from thirty seconds to several minutes. This sequence is what developers mean when they say CI/CD: Continuous Integration and Continuous Deployment.</p>
 
   <h2>How to Think About Choosing</h2>
 
@@ -229,32 +229,32 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
     <div class="question-item">
       <div class="q-num">Question 01</div>
       <div class="q-text">What are you building, and for how many people?</div>
-      <div class="q-body">The nature of the product determines the nature of the infrastructure it needs. A static marketing site and a real-time financial dashboard are both products — but they make entirely different demands on a server. Scale matters equally.</div>
+      <div class="q-body">The nature of the product determines the nature of the infrastructure it needs. A static marketing site and a real-time financial dashboard are both products, but they make entirely different demands on a server. Scale matters equally.</div>
     </div>
     <div class="question-item">
       <div class="q-num">Question 02</div>
-      <div class="q-text">What is your budget — in money and in time?</div>
+      <div class="q-text">What is your budget, in money and in time?</div>
       <div class="q-body">These are not the same thing. Some platforms are cheap financially but expensive in configuration time. Others charge more but deploy in minutes. A solo builder pays in time what they save in money, and vice versa.</div>
     </div>
     <div class="question-item">
       <div class="q-num">Question 03</div>
-      <div class="q-text">What does your product need most — speed, flexibility, or simplicity?</div>
+      <div class="q-text">What does your product need most: speed, flexibility, or simplicity?</div>
       <div class="q-body">Most platforms optimise for one of these three at the expense of the others. Knowing which one your product needs most narrows the field immediately.</div>
     </div>
     <div class="question-item">
       <div class="q-num">Question 04</div>
       <div class="q-text">What will your build need in the age of AI?</div>
-      <div class="q-body">Most PaaS platforms were designed before AI became a standard product layer. They were not designed with questions like: does this platform support MCP server integration? Can it handle the communication overhead between a product and an AI model? These are not hypothetical questions — they are the next wave of infrastructure requirements.</div>
+      <div class="q-body">Most PaaS platforms were designed before AI became a standard product layer. They were not designed with questions like: does this platform support MCP server integration? Can it handle the communication overhead between a product and an AI model? These are not hypothetical questions. They are the next wave of infrastructure requirements.</div>
     </div>
   </div>
 
   <div class="callout">
-    <p><strong>The age of AI has not yet fully touched PaaS. But it will.</strong> The developers who are already asking what their infrastructure needs to support — not just today but in the next iteration of what building means — are the ones who will not have to migrate everything when it does.</p>
+    <p><strong>The age of AI has not yet fully touched PaaS. But it will.</strong> The developers who are already asking what their infrastructure needs to support, not just today but in the next iteration of what building means, are the ones who will not have to migrate everything when it does.</p>
   </div>
 
   <h2>What Looking Taught Me</h2>
 
-  <p>Understanding infrastructure did not make Moonframe more technically sophisticated overnight. But it changed what questions get asked before the next build starts. Not just which platform — but what the platform needs to be capable of, what it will cost across every dimension that matters, and whether it is built for the kind of product the world is moving toward.</p>
+  <p>Understanding infrastructure did not make Moonframe more technically sophisticated overnight. But it changed what questions get asked before the next build starts. Not just which platform, but what the platform needs to be capable of, what it will cost across every dimension that matters, and whether it is built for the kind of product the world is moving toward.</p>
 
   <p>The invisible infrastructure is only invisible until you look at it directly. Once you do, you cannot un-see it. Every product you build after that moment is built on ground you actually understand.</p>
 
