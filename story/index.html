@@ -23,11 +23,11 @@ body{font-family:'Space Grotesk',sans-serif;background:#fff;color:#000;overflow-
 
 /* NAV */
 nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bottom:4px solid #000;z-index:60;display:flex;align-items:center;justify-content:space-between;padding:0 40px}
-.nav-logo{display:flex;align-items:center;text-decoration:none}
+.nav-logo{display:flex;align-items:center;text-decoration:none;color:#000}
 .logo-mark{width:44px;height:44px;border:4px solid #000;background:#fff;display:flex;align-items:center;justify-content:center;position:relative;box-shadow:3px 3px 0 #000;flex-shrink:0}
-.logo-mark-inner{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:-0.05em}
+.logo-mark-inner{font-family:'Space Mono',monospace;font-weight:700;font-size:13px;letter-spacing:-0.05em;color:#000}
 .logo-accent{position:absolute;bottom:-4px;right:-4px;width:10px;height:10px;background:#F97316;border:2px solid #000}
-.logo-wordmark{font-family:'Space Mono',monospace;font-weight:700;font-size:20px;margin-left:12px}
+.logo-wordmark{font-family:'Space Mono',monospace;font-weight:700;font-size:20px;margin-left:12px;color:#000}
 .nav-back{font-family:'Space Mono',monospace;font-size:13px;text-transform:uppercase;letter-spacing:0.1em;color:#000;text-decoration:none;border-bottom:2px solid #F97316;padding-bottom:2px}
 .nav-back:hover{color:#F97316}
 
@@ -36,9 +36,9 @@ nav{position:fixed;top:0;left:0;width:100%;height:72px;background:#fff;border-bo
 .cv-btn:hover{box-shadow:6px 6px 0 #000;transform:translate(-2px,-2px)}
 
 /* INTRO */
-.intro{padding:140px 40px 72px;max-width:900px;margin:0 auto;text-align:center}
+.intro{padding:132px 40px 64px;max-width:900px;margin:0 auto;text-align:center}
 .intro-label{font-family:'Space Mono',monospace;font-size:13px;letter-spacing:0.2em;text-transform:uppercase;color:#F97316;margin-bottom:20px}
-.intro h1{font-weight:700;font-size:clamp(40px,7vw,84px);line-height:0.95;letter-spacing:-0.03em}
+.intro h1{font-weight:700;font-size:clamp(28px,4.2vw,54px);line-height:0.95;letter-spacing:-0.03em}
 .intro p{font-size:18px;line-height:1.7;margin-top:24px;color:#333}
 .scroll-hint{font-family:'Space Mono',monospace;font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:#666;margin-top:40px}
 .scroll-hint span{display:inline-block;margin-left:8px;animation:nudge 1.4s ease-in-out infinite}
@@ -148,7 +148,7 @@ td:last-child{font-family:'Space Mono',monospace;font-size:13px;color:#555;white
 
 <section class="intro">
   <div class="intro-label">The Story</div>
-  <h1>HOW A BOY WITH<br>SPARE PARTS ENDED UP<br>SHIPPING PRODUCTS</h1>
+  <h1>HOW A BOY WITH SPARE PARTS<br>ENDED UP SHIPPING PRODUCTS</h1>
   <p>Seven chapters, in order. Every claim here is on the CV, and the CV is one click away at any point.</p>
   <div class="scroll-hint">Scroll to walk through it <span>→</span></div>
 </section>
@@ -258,9 +258,23 @@ window.addEventListener('scroll', () => {
   ticking = true;
   requestAnimationFrame(() => { paint(); ticking = false; });
 }, {passive: true});
+// Deep link: /story/#4 opens on chapter 4.
+function jumpToHash(){
+  const n = parseInt((location.hash || '').slice(1), 10);
+  if(!n || n < 1 || n > CHAPTERS.length) return;
+  if(!wide.matches || still.matches){
+    rail.children[n - 1].scrollIntoView();
+    return;
+  }
+  const p = (n - 1) / CHAPTERS.length;
+  window.scrollTo(0, track.offsetTop + distance * p + 1);
+  paint();
+}
+window.addEventListener('hashchange', jumpToHash);
 window.addEventListener('resize', measure);
 wide.addEventListener('change', measure);
 measure();
+jumpToHash();
 </script>
 </body>
 </html>
